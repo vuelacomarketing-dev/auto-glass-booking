@@ -353,6 +353,79 @@ export default {
         </div>
       </section>
 
+      <section id="estimateScreen" class="hidden">
+
+  <div class="top-row">
+    <button class="back" onclick="backToVehicle()">← Back</button>
+    <div class="progress">Estimate</div>
+  </div>
+
+  <div id="vehicleSummary" class="summary"></div>
+
+  <h2>Your Estimate Options</h2>
+
+  <p class="hint">
+    Final pricing depends on glass availability, vehicle options,
+    OEM requirements, and ADAS calibration needs.
+  </p>
+
+  <div class="grid">
+
+    <div class="service">
+      <strong>Aftermarket Glass</strong>
+      <span>
+        High quality replacement glass that meets safety standards.
+      </span>
+
+      <br><br>
+
+      <strong>$375 - $425</strong>
+
+      <br><br>
+
+      <button class="primary">
+        Book Online
+      </button>
+    </div>
+
+    <div class="service">
+      <strong>OEM Glass</strong>
+      <span>
+        Manufactured to the same specifications as your original glass.
+      </span>
+
+      <br><br>
+
+      <strong>$525 - $675</strong>
+
+      <br><br>
+
+      <button class="primary">
+        Book Online
+      </button>
+    </div>
+
+    <div class="service">
+      <strong>ADAS Package</strong>
+      <span>
+        Includes calibration for cameras and advanced safety systems.
+      </span>
+
+      <br><br>
+
+      <strong>$625 - $850</strong>
+
+      <br><br>
+
+      <button class="primary">
+        Book Online
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
     </main>
 
   </div>
@@ -377,21 +450,29 @@ export default {
       document.getElementById("vehicleScreen").classList.remove("hidden");
       document.getElementById("selectedServiceSummary").textContent = service;
     }
+    
+function backToVehicle() {
+  document.getElementById("estimateScreen").classList.add("hidden");
+  document.getElementById("vehicleScreen").classList.remove("hidden");
+}
 
-    function goBack() {
-      document.getElementById("vehicleScreen").classList.add("hidden");
-      document.getElementById("serviceScreen").classList.remove("hidden");
-    }
+  function continueToEstimate() {
 
-    function continueToEstimate() {
-      const year = document.getElementById("year").value;
-      const make = document.getElementById("make").value;
-      const model = document.getElementById("model").value;
+  const year = document.getElementById("year").value;
+  const make = document.getElementById("make").value;
+  const model = document.getElementById("model").value;
 
-      if (!year || !make || !model) {
-        alert("Please enter your year, make, and model.");
-        return;
-      }
+  if (!year || !make || !model) {
+    alert("Please enter your year, make, and model.");
+    return;
+  }
+
+  document.getElementById("vehicleScreen").classList.add("hidden");
+  document.getElementById("estimateScreen").classList.remove("hidden");
+
+  document.getElementById("vehicleSummary").textContent =
+    selectedService + " • " + year + " " + make + " " + model;
+}
 
       alert("Next step: estimate options for " + year + " " + make + " " + model);
     }
