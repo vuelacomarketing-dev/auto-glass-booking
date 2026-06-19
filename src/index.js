@@ -26,7 +26,7 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 56px;
+      margin-bottom: 52px;
       gap: 20px;
     }
 
@@ -76,24 +76,39 @@ export default {
       box-shadow: 0 24px 60px rgba(15,23,42,.10);
     }
 
-    .question {
+    .top-row {
       display: flex;
-      align-items: end;
       justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 22px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .back {
+      border: none;
+      background: transparent;
+      color: #111827;
+      font-size: 15px;
+      cursor: pointer;
+      padding: 0;
+      font-weight: 700;
+    }
+
+    .progress {
+      color: #6b7280;
+      font-size: 14px;
     }
 
     h2 {
       margin: 0;
-      font-size: 26px;
-      letter-spacing: -.4px;
+      font-size: 28px;
+      letter-spacing: -.5px;
     }
 
     .hint {
       color: #6b7280;
-      font-size: 14px;
-      margin: 6px 0 0;
+      font-size: 15px;
+      margin: 8px 0 24px;
+      line-height: 1.5;
     }
 
     .grid {
@@ -131,10 +146,64 @@ export default {
       line-height: 1.5;
     }
 
+    .form {
+      display: grid;
+      gap: 18px;
+      max-width: 620px;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 15px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid #d1d5db;
+      font-size: 16px;
+      background: white;
+    }
+
+    select:focus, input:focus {
+      outline: none;
+      border-color: #111827;
+      box-shadow: 0 0 0 4px rgba(17,24,39,.08);
+    }
+
+    .primary {
+      margin-top: 8px;
+      background: #111827;
+      color: white;
+      border: none;
+      padding: 16px 22px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .summary {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      border-radius: 16px;
+      color: #374151;
+      font-size: 14px;
+      margin-bottom: 22px;
+      width: fit-content;
+    }
+
+    .hidden {
+      display: none;
+    }
+
     @media (max-width: 700px) {
-      body {
-        padding: 18px;
-      }
+      body { padding: 18px; }
 
       .header {
         margin-bottom: 38px;
@@ -150,25 +219,21 @@ export default {
         font-size: 13px;
       }
 
-      h1 {
-        font-size: 36px;
-      }
+      h1 { font-size: 36px; }
 
-      .hero p {
-        font-size: 16px;
-      }
+      .hero p { font-size: 16px; }
 
       .card {
         padding: 22px;
         border-radius: 24px;
       }
 
-      .question {
-        display: block;
-      }
-
       .grid {
         grid-template-columns: 1fr;
+      }
+
+      .primary {
+        width: 100%;
       }
     }
   </style>
@@ -182,7 +247,7 @@ export default {
       </div>
 
       <a class="call-button" href="tel:8172980078">
-          (817) 298-0078
+        Call (817) 298-0078
       </a>
     </header>
 
@@ -192,47 +257,145 @@ export default {
     </section>
 
     <main class="card">
-      <div class="question">
-        <div>
-          <h2>What service do you need?</h2>
-          <p class="hint">Choose the option that best matches your auto glass issue.</p>
+
+      <section id="serviceScreen">
+        <h2>What service do you need?</h2>
+        <p class="hint">Choose the option that best matches your auto glass issue.</p>
+
+        <div class="grid">
+          <button class="service" onclick="selectService('Windshield Replacement')">
+            <strong>Windshield Replacement</strong>
+            <span>Cracked or damaged windshield requiring replacement.</span>
+          </button>
+
+          <button class="service" onclick="selectService('Windshield Repair')">
+            <strong>Windshield Repair</strong>
+            <span>Small chips and minor damage that may be repairable.</span>
+          </button>
+
+          <button class="service" onclick="selectService('Door Glass')">
+            <strong>Door Glass</strong>
+            <span>Driver or passenger side window replacement.</span>
+          </button>
+
+          <button class="service" onclick="selectService('Back Glass')">
+            <strong>Back Glass</strong>
+            <span>Rear window replacement service.</span>
+          </button>
+
+          <button class="service" onclick="selectService('Quarter Glass')">
+            <strong>Quarter Glass</strong>
+            <span>Small rear side window replacement.</span>
+          </button>
+
+          <button class="service" onclick="selectService('ADAS Calibration')">
+            <strong>ADAS Calibration</strong>
+            <span>Calibration for vehicle cameras and safety systems.</span>
+          </button>
         </div>
-      </div>
+      </section>
 
-      <div class="grid">
-        <button class="service">
-          <strong>Windshield Replacement</strong>
-          <span>Cracked or damaged windshield requiring replacement.</span>
-        </button>
+      <section id="vehicleScreen" class="hidden">
+        <div class="top-row">
+          <button class="back" onclick="goBack()">← Back</button>
+          <div class="progress">Vehicle</div>
+        </div>
 
-        <button class="service">
-          <strong>Windshield Repair</strong>
-          <span>Small chips and minor damage that may be repairable.</span>
-        </button>
+        <div id="selectedServiceSummary" class="summary"></div>
 
-        <button class="service">
-          <strong>Door Glass</strong>
-          <span>Driver or passenger side window replacement.</span>
-        </button>
+        <h2>Tell us about your vehicle.</h2>
+        <p class="hint">This helps us estimate the right glass option for your vehicle.</p>
 
-        <button class="service">
-          <strong>Back Glass</strong>
-          <span>Rear window replacement service.</span>
-        </button>
+        <div class="form">
+          <div>
+            <label>Year</label>
+            <select id="year">
+              <option value="">Select year</option>
+            </select>
+          </div>
 
-        <button class="service">
-          <strong>Quarter Glass</strong>
-          <span>Small rear side window replacement.</span>
-        </button>
+          <div>
+            <label>Make</label>
+            <select id="make">
+              <option value="">Select make</option>
+              <option>Acura</option>
+              <option>Audi</option>
+              <option>BMW</option>
+              <option>Buick</option>
+              <option>Cadillac</option>
+              <option>Chevrolet</option>
+              <option>Chrysler</option>
+              <option>Dodge</option>
+              <option>Ford</option>
+              <option>GMC</option>
+              <option>Honda</option>
+              <option>Hyundai</option>
+              <option>Jeep</option>
+              <option>Kia</option>
+              <option>Lexus</option>
+              <option>Mazda</option>
+              <option>Mercedes-Benz</option>
+              <option>Nissan</option>
+              <option>Ram</option>
+              <option>Subaru</option>
+              <option>Tesla</option>
+              <option>Toyota</option>
+              <option>Volkswagen</option>
+            </select>
+          </div>
 
-        <button class="service">
-          <strong>ADAS Calibration</strong>
-          <span>Calibration for vehicle cameras and safety systems.</span>
-        </button>
-      </div>
+          <div>
+            <label>Model</label>
+            <input id="model" type="text" placeholder="Example: Camry, F-150, Cherokee" />
+          </div>
+
+          <button class="primary" onclick="continueToEstimate()">Continue</button>
+        </div>
+      </section>
+
     </main>
 
   </div>
+
+  <script>
+    let selectedService = "";
+
+    const yearSelect = document.getElementById("year");
+    const currentYear = new Date().getFullYear();
+
+    for (let year = currentYear + 1; year >= 1990; year--) {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      yearSelect.appendChild(option);
+    }
+
+    function selectService(service) {
+      selectedService = service;
+
+      document.getElementById("serviceScreen").classList.add("hidden");
+      document.getElementById("vehicleScreen").classList.remove("hidden");
+      document.getElementById("selectedServiceSummary").textContent = service;
+    }
+
+    function goBack() {
+      document.getElementById("vehicleScreen").classList.add("hidden");
+      document.getElementById("serviceScreen").classList.remove("hidden");
+    }
+
+    function continueToEstimate() {
+      const year = document.getElementById("year").value;
+      const make = document.getElementById("make").value;
+      const model = document.getElementById("model").value;
+
+      if (!year || !make || !model) {
+        alert("Please enter your year, make, and model.");
+        return;
+      }
+
+      alert("Next step: estimate options for " + year + " " + make + " " + model);
+    }
+  </script>
 </body>
 </html>
 `;
