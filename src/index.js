@@ -68,13 +68,10 @@ export default {
       max-width: 620px;
     }
 
-    .card {
-      background: rgba(255,255,255,.94);
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 30px;
-      padding: 34px;
-      box-shadow: 0 24px 60px rgba(15,23,42,.10);
-    }
+    .content {
+  max-width: 980px;
+  margin: 0 auto;
+}
 
     .top-row {
       display: flex;
