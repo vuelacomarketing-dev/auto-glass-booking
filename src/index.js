@@ -532,11 +532,11 @@ export default {
     OEM requirements, and ADAS calibration needs.
   </p>
 
-  <div class="grid">
+ <div class="estimate-grid">
 
-    <div class="service">
+    <div class="estimate-card">
+      <span class="badge">Most Popular</span>
       <strong>Aftermarket Glass</strong>
-
       <span>
         High quality replacement glass that meets safety standards.
       </span>
@@ -554,9 +554,9 @@ export default {
       </button>
     </div>
 
-    <div class="service">
+    <div class="estimate-card">
+     <span class="badge">Factory Match</span>
       <strong>OEM Glass</strong>
-
       <span>
         Manufactured to the same specifications as your original glass.
       </span>
@@ -574,9 +574,9 @@ export default {
       </button>
     </div>
 
-    <div class="service">
+   <div class="estimate-card">
+   <span class="badge">Recommended</span>
       <strong>ADAS Package</strong>
-
       <span>
         Includes calibration for cameras and advanced safety systems.
       </span>
