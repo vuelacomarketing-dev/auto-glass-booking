@@ -813,7 +813,7 @@ const clientConfig = {
   phone: "(541) 799-0965",
   phoneLink: "5417990965",
   websiteUrl: "https://vuelaco.org/",
-  logoUrl: "https://placehold.co/210x70?text=VUELA+Demo",
+  logoUrl: "https://assets.cdn.filesafe.space/oDHddaGyLHDBSkHwMRDF/media/68ceb81099621fe67de20a25.png",
   primaryColor: "#0f766e",
   webhookUrl: "https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a",
   redirectSeconds: 20
