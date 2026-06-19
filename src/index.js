@@ -472,9 +472,13 @@ export default {
   <div class="shell">
 
    <header class="header">
-  <a class="logo" id="logoLink" href="#">
-    <img id="clientLogo" src="" alt="Client Logo">
-  </a>
+ <a class="logo" id="logoLink" href="#">
+  <img
+    id="clientLogo"
+    src=""
+    alt="Client Logo"
+    onerror="this.src='https://vuelaco.org/default-logo.png';">
+</a>
 
   <a class="call-button" id="callButton" href="#">
     Loading...
