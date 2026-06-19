@@ -351,6 +351,41 @@ export default {
   max-width: 100%;
   overflow-wrap: break-word;
 }
+.estimate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.estimate-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 26px;
+  padding: 26px;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: .2s ease;
+}
+
+.estimate-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  box-shadow: 0 18px 38px rgba(15, 118, 110, .16);
+}
+
+.badge {
+  display: inline-block;
+  width: fit-content;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
 
 @media (max-width: 700px) {
 
