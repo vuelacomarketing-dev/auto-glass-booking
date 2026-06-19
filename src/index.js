@@ -23,15 +23,6 @@ export default {
       text-align: center;
       margin-bottom: 28px;
     }
-    .badge {
-      display: inline-block;
-      background: #111827;
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      margin-bottom: 14px;
-    }
     h1 {
       font-size: 42px;
       margin: 0 0 10px;
@@ -49,31 +40,12 @@ export default {
       padding: 32px;
       box-shadow: 0 24px 60px rgba(15,23,42,.10);
     }
-    .steps {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 28px;
-      font-size: 13px;
-      color: #6b7280;
+    .logo {
+      margin-bottom: 26px;
     }
-    .step {
-      flex: 1;
-      padding: 10px;
-      border-radius: 999px;
-      background: #f3f4f6;
-      text-align: center;
-    }
-    .step.active {
-      background: #111827;
-      color: white;
-    }
-    h2 {
-      margin: 0 0 8px;
-      font-size: 26px;
-    }
-    .subtitle {
-      color: #6b7280;
-      margin: 0 0 24px;
+    .logo img {
+      max-height: 60px;
+      max-width: 190px;
     }
     .grid {
       display: grid;
@@ -104,70 +76,62 @@ export default {
       font-size: 14px;
       line-height: 1.45;
     }
-    .trust {
-      margin-top: 24px;
-      padding: 18px;
-      border-radius: 18px;
-      background: #f9fafb;
-      color: #4b5563;
-      font-size: 14px;
-      line-height: 1.5;
-    }
     @media (max-width: 700px) {
       body { padding: 16px; }
       h1 { font-size: 32px; }
       .grid { grid-template-columns: 1fr; }
-      .steps { flex-direction: column; }
     }
   </style>
 </head>
 <body>
   <div class="shell">
-  <div class="hero">
-  <h1>Let's get your glass repaired.</h1>
-  <p>Answer a few questions to receive an estimate and schedule service.</p>
-</div>
+    <div class="hero">
+      <h1>Let's get your glass repaired.</h1>
+      <p>Answer a few questions to receive an estimate and schedule service.</p>
+    </div>
 
     <div class="card">
-    <div style="margin-bottom:24px;">
-  <img
-    src="https://placehold.co/180x60?text=Client+Logo"
-    style="max-height:60px;"
-  />
-</div>
-   <div class="grid">
+      <div class="logo">
+        <img src="https://placehold.co/180x60?text=Client+Logo" />
+      </div>
 
-  <button class="service">
-    <strong>🚗 Windshield Replacement</strong>
-    <span>Cracked or damaged windshield requiring replacement.</span>
-  </button>
+      <div class="grid">
+        <button class="service">
+          <strong>Windshield Replacement</strong>
+          <span>Cracked or damaged windshield requiring replacement.</span>
+        </button>
 
-  <button class="service">
-    <strong>🔧 Windshield Repair</strong>
-    <span>Small chips and minor damage that may be repairable.</span>
-  </button>
+        <button class="service">
+          <strong>Windshield Repair</strong>
+          <span>Small chips and minor damage that may be repairable.</span>
+        </button>
 
-  <button class="service">
-    <strong>🪟 Door Glass</strong>
-    <span>Driver or passenger side window replacement.</span>
-  </button>
+        <button class="service">
+          <strong>Door Glass</strong>
+          <span>Driver or passenger side window replacement.</span>
+        </button>
 
-  <button class="service">
-    <strong>🚘 Back Glass</strong>
-    <span>Rear window replacement service.</span>
-  </button>
+        <button class="service">
+          <strong>Back Glass</strong>
+          <span>Rear window replacement service.</span>
+        </button>
 
-  <button class="service">
-    <strong>📍 Quarter Glass</strong>
-    <span>Small rear side window replacement.</span>
-  </button>
+        <button class="service">
+          <strong>Quarter Glass</strong>
+          <span>Small rear side window replacement.</span>
+        </button>
 
-  <button class="service">
-    <strong>📷 ADAS Calibration</strong>
-    <span>Calibration for vehicle cameras and safety systems.</span>
-  </button>
+        <button class="service">
+          <strong>ADAS Calibration</strong>
+          <span>Calibration for vehicle cameras and safety systems.</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+`;
 
-</div>
     return new Response(html, {
       headers: { "content-type": "text/html;charset=UTF-8" },
     });
