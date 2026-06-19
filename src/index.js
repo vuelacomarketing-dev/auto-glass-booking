@@ -347,6 +347,23 @@ export default {
   text-align: right;
 }
 
+.summary {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 700px) {
+  .confirmation-row {
+    display: block;
+  }
+
+  .confirmation-row strong {
+    display: block;
+    text-align: left;
+    margin-top: 4px;
+  }
+}
+
   @media (max-width: 700px) {
     body { padding: 18px; }
 
