@@ -123,64 +123,51 @@ export default {
 </head>
 <body>
   <div class="shell">
-    <div class="hero">
-      <div class="badge">Instant Auto Glass Estimate</div>
-      <h1>Get a fast estimate and schedule with confidence.</h1>
-      <p>Select your service to begin your quote.</p>
-    </div>
+  <div class="hero">
+  <h1>Let's get your glass repaired.</h1>
+  <p>Answer a few questions to receive an estimate and schedule service.</p>
+</div>
 
     <div class="card">
-      <div class="steps">
-        <div class="step active">1. Service</div>
-        <div class="step">2. Vehicle</div>
-        <div class="step">3. Estimate</div>
-        <div class="step">4. Book or Call</div>
-      </div>
+    <div style="margin-bottom:24px;">
+  <img
+    src="https://placehold.co/180x60?text=Client+Logo"
+    style="max-height:60px;"
+  />
+</div>
+   <div class="grid">
 
-      <h2>What service do you need?</h2>
-      <p class="subtitle">Choose the option that best matches your auto glass issue.</p>
+  <button class="service">
+    <strong>🚗 Windshield Replacement</strong>
+    <span>Cracked or damaged windshield requiring replacement.</span>
+  </button>
 
-      <div class="grid">
-        <button class="service">
-          <strong>Windshield Replacement</strong>
-          <span>For cracked or damaged windshields that need a full replacement.</span>
-        </button>
+  <button class="service">
+    <strong>🔧 Windshield Repair</strong>
+    <span>Small chips and minor damage that may be repairable.</span>
+  </button>
 
-        <button class="service">
-          <strong>Windshield Repair</strong>
-          <span>For small chips or minor damage that may not require replacement.</span>
-        </button>
+  <button class="service">
+    <strong>🪟 Door Glass</strong>
+    <span>Driver or passenger side window replacement.</span>
+  </button>
 
-        <button class="service">
-          <strong>Door Glass</strong>
-          <span>For side windows on the driver or passenger doors.</span>
-        </button>
+  <button class="service">
+    <strong>🚘 Back Glass</strong>
+    <span>Rear window replacement service.</span>
+  </button>
 
-        <button class="service">
-          <strong>Back Glass</strong>
-          <span>For rear windshield or back window replacement.</span>
-        </button>
+  <button class="service">
+    <strong>📍 Quarter Glass</strong>
+    <span>Small rear side window replacement.</span>
+  </button>
 
-        <button class="service">
-          <strong>Quarter Glass</strong>
-          <span>For smaller side glass panels near the rear of the vehicle.</span>
-        </button>
+  <button class="service">
+    <strong>📷 ADAS Calibration</strong>
+    <span>Calibration for vehicle cameras and safety systems.</span>
+  </button>
 
-        <button class="service">
-          <strong>ADAS Calibration</strong>
-          <span>For vehicles with cameras, sensors, lane assist, or safety features.</span>
-        </button>
-      </div>
-
-      <div class="trust">
-        Estimates may vary based on glass availability, OEM vs aftermarket glass, ADAS requirements, and vehicle options.
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-`;
-
+</div>
     return new Response(html, {
       headers: { "content-type": "text/html;charset=UTF-8" },
     });
