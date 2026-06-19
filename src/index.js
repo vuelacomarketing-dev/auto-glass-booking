@@ -894,7 +894,20 @@ function confirmAppointment() {
     alert("Please enter your name, phone, and email.");
     return;
   }
+const appointmentData = {
+  service: selectedService,
+  estimate: selectedEstimate,
+  serviceType: selectedServiceType,
+  zip: selectedZip,
+  date: selectedDate,
+  time: selectedTime,
+  firstName,
+  lastName,
+  phone,
+  email
+};
 
+console.log("Appointment Data:", appointmentData);
   document.getElementById("contactScreen").classList.add("hidden");
   document.getElementById("confirmationScreen").classList.remove("hidden");
 
