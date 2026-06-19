@@ -6,6 +6,7 @@ export default {
 <head>
   <title>Auto Glass Booking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
   <style>
     * { box-sizing: border-box; }
 
@@ -199,40 +200,6 @@ export default {
       display: none;
     }
 
-    @media (max-width: 700px) {
-      body { padding: 18px; }
-
-      .header {
-        margin-bottom: 38px;
-      }
-
-      .logo img {
-        max-height: 46px;
-        max-width: 160px;
-      }
-
-      .call-button {
-        padding: 11px 15px;
-        font-size: 13px;
-      }
-
-      h1 { font-size: 36px; }
-
-      .hero p { font-size: 16px; }
-
-      .card {
-        padding: 22px;
-        border-radius: 24px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .primary {
-        width: 100%;
-      }
-
     .calendar-header {
   display: flex;
   align-items: center;
@@ -309,7 +276,42 @@ export default {
   padding: 16px;
   border-radius: 16px;
 }
-    }
+
+  @media (max-width: 700px) {
+      body { padding: 18px; }
+
+      .header {
+        margin-bottom: 38px;
+      }
+
+      .logo img {
+        max-height: 46px;
+        max-width: 160px;
+      }
+
+      .call-button {
+        padding: 11px 15px;
+        font-size: 13px;
+      }
+
+      h1 { font-size: 36px; }
+
+      .hero p { font-size: 16px; }
+
+      .card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .primary {
+        width: 100%;
+      }
+      }
+      
   </style>
 
   
