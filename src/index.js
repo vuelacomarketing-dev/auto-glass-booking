@@ -353,6 +353,7 @@ export default {
 }
 
 @media (max-width: 700px) {
+
   .confirmation-row {
     display: block;
   }
@@ -362,43 +363,61 @@ export default {
     text-align: left;
     margin-top: 4px;
   }
-}
 
-  @media (max-width: 700px) {
-    body { padding: 18px; }
+  body { padding: 18px; }
 
-    .header { margin-bottom: 38px; }
+  .header { margin-bottom: 38px; }
 
-    .logo img {
-      max-height: 46px;
-      max-width: 160px;
-    }
-
-    .call-button {
-      padding: 11px 15px;
-      font-size: 13px;
-    }
-
-    h1 { font-size: 36px; }
-
-    .hero p { font-size: 16px; }
-
-    .grid { grid-template-columns: 1fr; }
-
-    .primary { width: 100%; }
-
-    .calendar-days,
-    .calendar-grid {
-      gap: 6px;
-    }
-
-    .calendar-date {
-      padding: 12px 0;
-      font-size: 14px;
-    }
+  .logo img {
+    max-height: 46px;
+    max-width: 160px;
   }
-</style>
 
+  .call-button {
+    padding: 11px 15px;
+    font-size: 13px;
+  }
+
+  h1 { font-size: 36px; }
+
+  .hero p { font-size: 16px; }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .primary {
+    width: 100%;
+  }
+
+  .calendar-days,
+  .calendar-grid {
+    gap: 6px;
+  }
+
+  .calendar-date {
+    padding: 12px 0;
+    font-size: 14px;
+  }
+
+  /* Estimate Cards Swipe */
+
+  .estimate-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .estimate-card {
+    min-width: 100%;
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+  }
+
+}
   
 </head>
 <body>
