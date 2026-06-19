@@ -1070,7 +1070,10 @@ vehicleModel,
   firstName,
   lastName,
   phone,
-  email
+  email,
+    submittedAt: new Date().toISOString(),
+  clientId: "demo",
+  schedulerVersion: "1.0"
 };
 
 fetch("https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a", {
