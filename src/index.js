@@ -1075,13 +1075,11 @@ vehicleModel,
 
 fetch("https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
+  mode: "no-cors",
   body: JSON.stringify(appointmentData)
 })
-.then(response => {
-  console.log("Webhook sent successfully");
+.then(() => {
+  console.log("Webhook sent");
 })
 .catch(error => {
   console.error("Webhook error:", error);
