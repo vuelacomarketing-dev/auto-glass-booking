@@ -233,33 +233,74 @@ export default {
         width: 100%;
       }
 
-      .calendar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  max-width: 520px;
-  margin-bottom: 24px;
+    .calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 620px;
+  margin: 28px 0 18px;
 }
 
-.calendar button,
-.time-button {
-  border: 1px solid #e5e7eb;
+.calendar-header button {
+  border: none;
   background: white;
-  border-radius: 18px;
-  padding: 18px;
-  font-weight: 800;
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  font-size: 28px;
   cursor: pointer;
 }
 
-.calendar button:hover,
-.time-button:hover {
-  border-color: #111827;
+.calendar-days,
+.calendar-grid {
+  max-width: 620px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-days div {
+  text-align: center;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.calendar-date {
+  border: none;
+  background: #e8f3f8;
+  border-radius: 12px;
+  padding: 16px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.calendar-date.unavailable {
+  background: transparent;
+  color: #9ca3af;
+  cursor: default;
+}
+
+.calendar-date.selected {
+  background: #111827;
+  color: white;
 }
 
 .times-area {
+  max-width: 620px;
+  margin-top: 26px;
   display: grid;
   gap: 12px;
-  max-width: 520px;
+}
+
+.time-button {
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 999px;
+  padding: 18px;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .no-times {
@@ -268,9 +309,10 @@ export default {
   padding: 16px;
   border-radius: 16px;
 }
-
     }
   </style>
+
+  
 </head>
 <body>
   <div class="shell">
@@ -524,19 +566,25 @@ export default {
 
   <h2>Choose a date and time.</h2>
   <p class="hint">Select an available date to see appointment times.</p>
+<div class="calendar-header">
+  <button onclick="changeMonth(-1)">‹</button>
+  <h3 id="calendarMonth"></h3>
+  <button onclick="changeMonth(1)">›</button>
+</div>
 
-  <div class="calendar">
-    <button onclick="selectDate('June 22')">22</button>
-    <button onclick="selectDate('June 23')">23</button>
-    <button onclick="selectDate('June 24')">24</button>
-    <button onclick="selectDate('June 25')">25</button>
-    <button onclick="selectDate('June 26')">26</button>
-    <button onclick="selectDate('June 27')">27</button>
-    <button onclick="selectDate('June 29')">29</button>
-    <button onclick="selectDate('June 30')">30</button>
-  </div>
+<div class="calendar-days">
+  <div>SUN</div>
+  <div>MON</div>
+  <div>TUE</div>
+  <div>WED</div>
+  <div>THU</div>
+  <div>FRI</div>
+  <div>SAT</div>
+</div>
 
-  <div id="timesArea" class="times-area"></div>
+<div id="calendarGrid" class="calendar-grid"></div>
+
+<div id="timesArea" class="times-area"></div>
 </section>
 
     </main>
