@@ -620,7 +620,7 @@ export default {
 
   <div class="form">
     <div>
-      <label>First Name</label>
+      <label>First Name*</label>
       <input id="firstName" type="text" placeholder="First name" />
     </div>
 
@@ -630,7 +630,7 @@ export default {
     </div>
 
     <div>
-      <label>Phone</label>
+      <label>Phone*</label>
       <input id="phone" type="tel" placeholder="Phone number" />
     </div>
 
@@ -646,7 +646,7 @@ export default {
 <section id="confirmationScreen" class="hidden">
   <div id="finalSummary" class="summary"></div>
 
-  <h2>Your appointment request has been received.</h2>
+  <h2>We’ll get in touch to confirm your appointment details.</h2>
   <p class="hint">Your details will be sent to the shop’s scheduling system.</p>
 
   <a class="call-button" href="tel:8172980078">
@@ -900,6 +900,14 @@ function confirmAppointment() {
     alert("Please enter your name, phone, and email.");
     return;
   }
+  
+const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+if (!emailPattern.test(email)) {
+  alert("Please enter a valid email address.");
+  return;
+}
+  
 const appointmentData = {
   service: selectedService,
   estimate: selectedEstimate,
