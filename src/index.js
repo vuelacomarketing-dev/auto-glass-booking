@@ -777,7 +777,7 @@ export default {
     </div>
 
     <div>
-      <label>Last Name</label>
+      <label>Last Name*</label>
       <input id="lastName" type="text" placeholder="Last name" />
     </div>
 
@@ -787,7 +787,7 @@ export default {
     </div>
 
     <div>
-      <label>Email</label>
+      <label>Email*</label>
       <input id="email" type="email" placeholder="Email address" />
     </div>
 <div id="contactError" class="error-message"></div>
