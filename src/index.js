@@ -182,7 +182,7 @@ export default {
       </div>
 
       <a class="call-button" href="tel:8172980078">
-        Call To Schedule
+          📞 (817) 298-0078
       </a>
     </header>
 
