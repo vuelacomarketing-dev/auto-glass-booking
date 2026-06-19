@@ -232,6 +232,43 @@ export default {
       .primary {
         width: 100%;
       }
+
+      .calendar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  margin-bottom: 24px;
+}
+
+.calendar button,
+.time-button {
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.calendar button:hover,
+.time-button:hover {
+  border-color: #111827;
+}
+
+.times-area {
+  display: grid;
+  gap: 12px;
+  max-width: 520px;
+}
+
+.no-times {
+  color: #6b7280;
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 16px;
+}
+
     }
   </style>
 </head>
@@ -476,38 +513,30 @@ export default {
     <button class="primary" onclick="continueToDate()">Continue</button>
   </div>
 </section>
+
 <section id="dateScreen" class="hidden">
   <div class="top-row">
     <button class="back" onclick="backToZip()">← Back</button>
-    <div class="progress">Date</div>
+    <div class="progress">Schedule</div>
   </div>
 
   <div id="dateSummary" class="summary"></div>
 
-  <h2>Choose a date.</h2>
-  <p class="hint">Select your preferred service date.</p>
+  <h2>Choose a date and time.</h2>
+  <p class="hint">Select an available date to see appointment times.</p>
 
-  <div class="grid">
-    <button class="service" onclick="selectDate('Tomorrow')">
-      <strong>Tomorrow</strong>
-      <span>Earliest available option.</span>
-    </button>
-
-    <button class="service" onclick="selectDate('Friday')">
-      <strong>Friday</strong>
-      <span>Morning and afternoon options.</span>
-    </button>
-
-    <button class="service" onclick="selectDate('Saturday')">
-      <strong>Saturday</strong>
-      <span>Limited availability.</span>
-    </button>
-
-    <button class="service" onclick="selectDate('Sunday')">
-  <strong>Sunday</strong>
-  <span>Weekend availability.</span>
-</button>
+  <div class="calendar">
+    <button onclick="selectDate('June 22')">22</button>
+    <button onclick="selectDate('June 23')">23</button>
+    <button onclick="selectDate('June 24')">24</button>
+    <button onclick="selectDate('June 25')">25</button>
+    <button onclick="selectDate('June 26')">26</button>
+    <button onclick="selectDate('June 27')">27</button>
+    <button onclick="selectDate('June 29')">29</button>
+    <button onclick="selectDate('June 30')">30</button>
   </div>
+
+  <div id="timesArea" class="times-area"></div>
 </section>
 
     </main>
@@ -529,6 +558,17 @@ export default {
     option.textContent = year;
     yearSelect.appendChild(option);
   }
+  
+const availability = {
+  "June 22": ["8:00 AM", "10:00 AM", "2:00 PM"],
+  "June 23": ["9:00 AM", "11:00 AM"],
+  "June 24": [],
+  "June 25": ["12:00 PM", "3:00 PM"],
+  "June 26": ["8:30 AM", "1:00 PM"],
+  "June 27": ["10:00 AM"],
+  "June 29": ["9:00 AM", "2:00 PM"],
+  "June 30": []
+};
 
   function selectService(service) {
     selectedService = service;
@@ -625,7 +665,26 @@ function backToZip() {
 
 function selectDate(date) {
   selectedDate = date;
-  alert("Next step: choose a time for " + selectedDate);
+
+  const times = availability[date] || [];
+  const timesArea = document.getElementById("timesArea");
+
+  if (times.length === 0) {
+    timesArea.innerHTML =
+      '<div class="no-times">No available times for this date. Please choose another date.</div>';
+    return;
+  }
+
+  timesArea.innerHTML =
+    '<h3>Available times for ' + date + '</h3>' +
+    times.map(function(time) {
+      return '<button class="time-button" onclick="selectTime(\\'' + time + '\\')">' + time + '</button>';
+    }).join("");
+}
+
+function selectTime(time) {
+  selectedTime = time;
+  alert("Next step: contact info for " + selectedDate + " at " + selectedTime);
 }
 </script>
 </body>
