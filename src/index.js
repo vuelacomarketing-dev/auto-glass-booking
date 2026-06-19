@@ -819,6 +819,8 @@ const clientConfig = {
   websiteUrl: "https://vuelaco.org/",
   logoUrl: "https://assets.cdn.filesafe.space/oDHddaGyLHDBSkHwMRDF/media/68ceb81099621fe67de20a25.png",
   primaryColor: "#0f766e",
+  primaryDark: "#115e59",
+primarySoft: "#e6f5f3",
   webhookUrl: "https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a",
   redirectSeconds: 20
 };
@@ -837,6 +839,10 @@ document.getElementById("callButton").href =
 
 document.getElementById("callButton").textContent =
   clientConfig.phone;
+
+  document.documentElement.style.setProperty("--primary-color", clientConfig.primaryColor);
+document.documentElement.style.setProperty("--primary-dark", clientConfig.primaryDark);
+document.documentElement.style.setProperty("--primary-soft", clientConfig.primarySoft);
   
   let selectedService = "";
   let selectedEstimate = "";
