@@ -430,53 +430,55 @@ export default {
 
   </div>
 
-  <script>
-    let selectedService = "";
+<script>
+  let selectedService = "";
 
-    const yearSelect = document.getElementById("year");
-    const currentYear = new Date().getFullYear();
+  const yearSelect = document.getElementById("year");
+  const currentYear = new Date().getFullYear();
 
-    for (let year = currentYear + 1; year >= 1990; year--) {
-      const option = document.createElement("option");
-      option.value = year;
-      option.textContent = year;
-      yearSelect.appendChild(option);
-    }
-
-    function selectService(service) {
-      selectedService = service;
-
-      document.getElementById("serviceScreen").classList.add("hidden");
-      document.getElementById("vehicleScreen").classList.remove("hidden");
-      document.getElementById("selectedServiceSummary").textContent = service;
-    }
-    
-function backToVehicle() {
-  document.getElementById("estimateScreen").classList.add("hidden");
-  document.getElementById("vehicleScreen").classList.remove("hidden");
-}
-
-  function continueToEstimate() {
-
-  const year = document.getElementById("year").value;
-  const make = document.getElementById("make").value;
-  const model = document.getElementById("model").value;
-
-  if (!year || !make || !model) {
-    alert("Please enter your year, make, and model.");
-    return;
+  for (let year = currentYear + 1; year >= 1990; year--) {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    yearSelect.appendChild(option);
   }
 
-  document.getElementById("vehicleScreen").classList.add("hidden");
-  document.getElementById("estimateScreen").classList.remove("hidden");
+  function selectService(service) {
+    selectedService = service;
 
-  document.getElementById("vehicleSummary").textContent =
-    selectedService + " • " + year + " " + make + " " + model;
-}
+    document.getElementById("serviceScreen").classList.add("hidden");
+    document.getElementById("vehicleScreen").classList.remove("hidden");
+    document.getElementById("selectedServiceSummary").textContent = service;
+  }
 
-      alert("Next step: estimate options for " + year + " " + make + " " + model);
+  function goBack() {
+    document.getElementById("vehicleScreen").classList.add("hidden");
+    document.getElementById("serviceScreen").classList.remove("hidden");
+  }
+
+  function backToVehicle() {
+    document.getElementById("estimateScreen").classList.add("hidden");
+    document.getElementById("vehicleScreen").classList.remove("hidden");
+  }
+
+  function continueToEstimate() {
+    const year = document.getElementById("year").value;
+    const make = document.getElementById("make").value;
+    const model = document.getElementById("model").value;
+
+    if (!year || !make || !model) {
+      alert("Please enter your year, make, and model.");
+      return;
     }
-  </script>
+
+    document.getElementById("vehicleScreen").classList.add("hidden");
+    document.getElementById("estimateScreen").classList.remove("hidden");
+
+    document.getElementById("vehicleSummary").textContent =
+      selectedService + " • " + year + " " + make + " " + model;
+  }
+</script>
+
 </body>
 </html>
 `;
