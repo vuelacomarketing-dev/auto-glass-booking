@@ -7,312 +7,330 @@ export default {
   <title>Auto Glass Booking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <style>
-    * { box-sizing: border-box; }
+<style>
+  * { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #f7f8fb, #edf1f7);
-      color: #111827;
-      padding: 24px;
-    }
+  :root {
+    --primary-color: #0f766e;
+    --primary-dark: #115e59;
+    --primary-soft: #e6f5f3;
+    --text-color: #111827;
+  }
 
-    .shell {
-      max-width: 1040px;
-      margin: 0 auto;
-    }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f7f8fb, #edf1f7);
+    color: var(--text-color);
+    padding: 24px;
+  }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 52px;
-      gap: 20px;
-    }
+  .shell {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 52px;
+    gap: 20px;
+  }
+
+  .logo img {
+    max-height: 58px;
+    max-width: 210px;
+    display: block;
+  }
+
+  .call-button,
+  .primary {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .call-button {
+    text-decoration: none;
+    padding: 13px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    box-shadow: 0 12px 28px rgba(15, 118, 110, .18);
+  }
+
+  .primary {
+    margin-top: 8px;
+    padding: 16px 22px;
+    font-size: 16px;
+    width: fit-content;
+  }
+
+  .call-button:hover,
+  .primary:hover {
+    background: var(--primary-dark);
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 34px;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 1.05;
+    margin: 0 0 14px;
+    letter-spacing: -1.5px;
+  }
+
+  .hero p,
+  .hint,
+  .service span,
+  .progress {
+    color: #6b7280;
+  }
+
+  .hero p {
+    font-size: 19px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 620px;
+  }
+
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .back {
+    border: none;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0;
+    font-weight: 800;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: -.5px;
+  }
+
+  .hint {
+    font-size: 15px;
+    margin: 8px 0 24px;
+    line-height: 1.5;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .service {
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    border-radius: 22px;
+    padding: 24px;
+    text-align: left;
+    cursor: pointer;
+    transition: .2s ease;
+    min-height: 126px;
+  }
+
+  .service:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    box-shadow: 0 18px 38px rgba(15, 118, 110, .16);
+  }
+
+  .service strong {
+    display: block;
+    font-size: 19px;
+    margin-bottom: 8px;
+  }
+
+  .service span {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .form {
+    display: grid;
+    gap: 18px;
+    max-width: 620px;
+  }
+
+  label {
+    font-weight: 700;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  select,
+  input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid #d1d5db;
+    font-size: 16px;
+    background: white;
+  }
+
+  select:focus,
+  input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, .12);
+  }
+
+  .summary {
+    background: var(--primary-soft);
+    border: 1px solid rgba(15, 118, 110, .18);
+    padding: 14px 16px;
+    border-radius: 16px;
+    color: var(--primary-dark);
+    font-size: 14px;
+    margin-bottom: 22px;
+    width: fit-content;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 620px;
+    margin: 28px 0 18px;
+  }
+
+  .calendar-header button {
+    border: none;
+    background: white;
+    border-radius: 999px;
+    width: 42px;
+    height: 42px;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .calendar-header button:hover {
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+  }
+
+  .calendar-days,
+  .calendar-grid {
+    max-width: 620px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+
+  .calendar-days div {
+    text-align: center;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .calendar-date {
+    border: none;
+    background: var(--primary-soft);
+    border-radius: 12px;
+    padding: 16px 0;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--primary-dark);
+    font-weight: 800;
+  }
+
+  .calendar-date.unavailable {
+    background: transparent;
+    color: #9ca3af;
+    cursor: default;
+  }
+
+  .calendar-date.selected {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .times-area {
+    max-width: 620px;
+    margin-top: 26px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .time-button {
+    border: 1px solid #d1d5db;
+    background: white;
+    border-radius: 999px;
+    padding: 18px;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .time-button:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-dark);
+  }
+
+  .no-times {
+    color: #6b7280;
+    background: #f9fafb;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 700px) {
+    body { padding: 18px; }
+
+    .header { margin-bottom: 38px; }
 
     .logo img {
-      max-height: 58px;
-      max-width: 210px;
-      display: block;
+      max-height: 46px;
+      max-width: 160px;
     }
 
     .call-button {
-      text-decoration: none;
-      background: #111827;
-      color: #fff;
-      padding: 13px 20px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      white-space: nowrap;
-      box-shadow: 0 12px 28px rgba(17,24,39,.18);
+      padding: 11px 15px;
+      font-size: 13px;
     }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 34px;
+    h1 { font-size: 36px; }
+
+    .hero p { font-size: 16px; }
+
+    .grid { grid-template-columns: 1fr; }
+
+    .primary { width: 100%; }
+
+    .calendar-days,
+    .calendar-grid {
+      gap: 6px;
     }
 
-    h1 {
-      font-size: 48px;
-      line-height: 1.05;
-      margin: 0 0 14px;
-      letter-spacing: -1.5px;
-    }
-
-    .hero p {
-      color: #5b6472;
-      font-size: 19px;
-      line-height: 1.5;
-      margin: 0 auto;
-      max-width: 620px;
-    }
-
-    .content {
-  max-width: 980px;
-  margin: 0 auto;
-}
-
-    .top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .back {
-      border: none;
-      background: transparent;
-      color: #111827;
-      font-size: 15px;
-      cursor: pointer;
-      padding: 0;
-      font-weight: 700;
-    }
-
-    .progress {
-      color: #6b7280;
+    .calendar-date {
+      padding: 12px 0;
       font-size: 14px;
     }
-
-    h2 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: -.5px;
-    }
-
-    .hint {
-      color: #6b7280;
-      font-size: 15px;
-      margin: 8px 0 24px;
-      line-height: 1.5;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .service {
-      border: 1px solid #e5e7eb;
-      background: #fff;
-      border-radius: 22px;
-      padding: 24px;
-      text-align: left;
-      cursor: pointer;
-      transition: .2s ease;
-      min-height: 126px;
-    }
-
-    .service:hover {
-      transform: translateY(-3px);
-      border-color: #111827;
-      box-shadow: 0 18px 38px rgba(15,23,42,.11);
-    }
-
-    .service strong {
-      display: block;
-      font-size: 19px;
-      margin-bottom: 8px;
-    }
-
-    .service span {
-      color: #6b7280;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .form {
-      display: grid;
-      gap: 18px;
-      max-width: 620px;
-    }
-
-    label {
-      font-weight: 700;
-      font-size: 15px;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    select, input {
-      width: 100%;
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid #d1d5db;
-      font-size: 16px;
-      background: white;
-    }
-
-    select:focus, input:focus {
-      outline: none;
-      border-color: #111827;
-      box-shadow: 0 0 0 4px rgba(17,24,39,.08);
-    }
-
-    .primary {
-      margin-top: 8px;
-      background: #111827;
-      color: white;
-      border: none;
-      padding: 16px 22px;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      width: fit-content;
-    }
-
-    .summary {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      padding: 14px 16px;
-      border-radius: 16px;
-      color: #374151;
-      font-size: 14px;
-      margin-bottom: 22px;
-      width: fit-content;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .calendar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 620px;
-  margin: 28px 0 18px;
-}
-
-.calendar-header button {
-  border: none;
-  background: white;
-  border-radius: 999px;
-  width: 42px;
-  height: 42px;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.calendar-days,
-.calendar-grid {
-  max-width: 620px;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-}
-
-.calendar-days div {
-  text-align: center;
-  color: #6b7280;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.calendar-date {
-  border: none;
-  background: #e8f3f8;
-  border-radius: 12px;
-  padding: 16px 0;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.calendar-date.unavailable {
-  background: transparent;
-  color: #9ca3af;
-  cursor: default;
-}
-
-.calendar-date.selected {
-  background: #111827;
-  color: white;
-}
-
-.times-area {
-  max-width: 620px;
-  margin-top: 26px;
-  display: grid;
-  gap: 12px;
-}
-
-.time-button {
-  border: 1px solid #d1d5db;
-  background: white;
-  border-radius: 999px;
-  padding: 18px;
-  font-size: 17px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.no-times {
-  color: #6b7280;
-  background: #f9fafb;
-  padding: 16px;
-  border-radius: 16px;
-}
-
-  @media (max-width: 700px) {
-      body { padding: 18px; }
-
-      .header {
-        margin-bottom: 38px;
-      }
-
-      .logo img {
-        max-height: 46px;
-        max-width: 160px;
-      }
-
-      .call-button {
-        padding: 11px 15px;
-        font-size: 13px;
-      }
-
-      h1 { font-size: 36px; }
-
-      .hero p { font-size: 16px; }
-
-      .card {
-        padding: 22px;
-        border-radius: 24px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .primary {
-        width: 100%;
-      }
-      }
-      
-  </style>
+  }
+</style>
 
   
 </head>
