@@ -476,14 +476,49 @@ export default {
     <button class="primary" onclick="continueToDate()">Continue</button>
   </div>
 </section>
+<section id="dateScreen" class="hidden">
+  <div class="top-row">
+    <button class="back" onclick="backToZip()">← Back</button>
+    <div class="progress">Date</div>
+  </div>
+
+  <div id="dateSummary" class="summary"></div>
+
+  <h2>Choose a date.</h2>
+  <p class="hint">Select your preferred service date.</p>
+
+  <div class="grid">
+    <button class="service" onclick="selectDate('Tomorrow')">
+      <strong>Tomorrow</strong>
+      <span>Earliest available option.</span>
+    </button>
+
+    <button class="service" onclick="selectDate('Friday')">
+      <strong>Friday</strong>
+      <span>Morning and afternoon options.</span>
+    </button>
+
+    <button class="service" onclick="selectDate('Saturday')">
+      <strong>Saturday</strong>
+      <span>Limited availability.</span>
+    </button>
+
+    <button class="service" onclick="selectDate('Sunday')">
+  <strong>Sunday</strong>
+  <span>Weekend availability.</span>
+</button>
+  </div>
+</section>
 
     </main>
 
   </div>
 
 <script>
-let selectedEstimate = "";
   let selectedService = "";
+  let selectedEstimate = "";
+  let selectedZip = "";
+  let selectedDate = "";
 
   const yearSelect = document.getElementById("year");
   const currentYear = new Date().getFullYear();
@@ -574,11 +609,25 @@ function continueToDate() {
     return;
   }
 
-  alert("Next step: choose a date for ZIP " + zip);
+  selectedZip = zip;
+
+  document.getElementById("zipScreen").classList.add("hidden");
+  document.getElementById("dateScreen").classList.remove("hidden");
+
+  document.getElementById("dateSummary").textContent =
+    selectedService + " • " + selectedEstimate + " • " + selectedServiceType + " • " + selectedZip;
 }
 
-</script>
+function backToZip() {
+  document.getElementById("dateScreen").classList.add("hidden");
+  document.getElementById("zipScreen").classList.remove("hidden");
+}
 
+function selectDate(date) {
+  selectedDate = date;
+  alert("Next step: choose a time for " + selectedDate);
+}
+</script>
 </body>
 </html>
 `;
