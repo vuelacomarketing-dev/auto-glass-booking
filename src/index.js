@@ -593,13 +593,15 @@ export default {
   <div id="vehicleSummary" class="summary"></div>
 
   <h2>Your Estimate Options</h2>
-<p class="swipe-hint">
-  ← Swipe to view all options →
-</p>
+  
   <p class="hint">
     Final pricing depends on glass availability, vehicle options,
     OEM requirements, and ADAS calibration needs.
   </p>
+
+  <p class="swipe-hint">
+  ← Swipe to view all options →
+</p>
 
  <div class="estimate-grid">
 
