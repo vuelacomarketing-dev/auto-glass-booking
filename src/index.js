@@ -386,6 +386,14 @@ export default {
   font-weight: 800;
   margin-bottom: 16px;
 }
+.swipe-hint {
+  display: none;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
 
 @media (max-width: 700px) {
 
@@ -451,6 +459,9 @@ export default {
     flex: 0 0 100%;
     scroll-snap-align: center;
   }
+  .swipe-hint {
+  display: block;
+}
 
 }
   </style>
@@ -582,7 +593,9 @@ export default {
   <div id="vehicleSummary" class="summary"></div>
 
   <h2>Your Estimate Options</h2>
-
+<p class="swipe-hint">
+  ← Swipe to view all options →
+</p>
   <p class="hint">
     Final pricing depends on glass availability, vehicle options,
     OEM requirements, and ADAS calibration needs.
