@@ -453,7 +453,7 @@ export default {
   }
 
 }
-  <style/>
+  </style>
 
   
 </head>
