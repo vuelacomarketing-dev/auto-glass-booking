@@ -394,6 +394,16 @@ export default {
   font-weight: 700;
   margin-bottom: 16px;
 }
+.error-message {
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.input-error {
+  border-color: #dc2626 !important;
+}
 
 @media (max-width: 700px) {
 
@@ -582,7 +592,7 @@ export default {
             <label>Model</label>
             <input id="model" type="text" placeholder="Example: Camry, F-150, Cherokee" />
           </div>
-
+   <div id="vehicleError" class="error-message"></div>
           <button class="primary" onclick="continueToEstimate()">Continue</button>
         </div>
       </section>
@@ -713,7 +723,7 @@ export default {
       <label>ZIP Code</label>
       <input id="zipCode" type="text" placeholder="Example: 75001" maxlength="5" />
     </div>
-
+<div id="zipError" class="error-message"></div>
     <button class="primary" onclick="continueToDate()">Continue</button>
   </div>
 </section>
@@ -780,7 +790,7 @@ export default {
       <label>Email</label>
       <input id="email" type="email" placeholder="Email address" />
     </div>
-
+<div id="contactError" class="error-message"></div>
     <button class="primary" onclick="confirmAppointment()">Confirm Appointment</button>
   </div>
 </section>
@@ -900,10 +910,15 @@ let vehicleModel = "";
     const make = document.getElementById("make").value;
     const model = document.getElementById("model").value;
 
-    if (!year || !make || !model) {
-      alert("Please enter your year, make, and model.");
-      return;
-    }
+    
+  document.getElementById("vehicleError").textContent = "";
+
+  if (!year || !make || !model) {
+    document.getElementById("vehicleError").textContent =
+      "Please enter your year, make, and model.";
+    return;
+  }
+  
 vehicleYear = year;
 vehicleMake = make;
 vehicleModel = model;
@@ -947,11 +962,13 @@ vehicleModel = model;
 
   function continueToDate() {
     const zip = document.getElementById("zipCode").value;
+document.getElementById("zipError").textContent = "";
 
-    if (!zip) {
-      alert("Please enter your ZIP code.");
-      return;
-    }
+if (!zip) {
+  document.getElementById("zipError").textContent =
+    "Please enter your ZIP code.";
+  return;
+}
 
     selectedZip = zip;
 
@@ -1082,17 +1099,21 @@ function confirmAppointment() {
   const phone = document.getElementById("phone").value;
   const email = document.getElementById("email").value;
 
-  if (!firstName || !lastName || !phone || !email) {
-    alert("Please enter your name, phone, and email.");
-    return;
-  }
+ document.getElementById("contactError").textContent = "";
+
+if (!firstName || !lastName || !phone || !email) {
+  document.getElementById("contactError").textContent =
+    "Please complete all required fields.";
+  return;
+}
   
 const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
 
-if (!emailPattern.test(email)) {
-  alert("Please enter a valid email address.");
-  return;
-}
+  if (!emailPattern.test(email)) {
+    document.getElementById("contactError").textContent =
+      "Please enter a valid email address.";
+    return;
+  }
   
 const appointmentData = {
   service: selectedService,
