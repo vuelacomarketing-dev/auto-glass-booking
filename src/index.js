@@ -296,6 +296,56 @@ export default {
     padding: 16px;
     border-radius: 16px;
   }
+.confirmation {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-color);
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+  font-weight: 900;
+  margin: 0 auto 22px;
+}
+
+.confirmation-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 24px;
+  margin: 28px auto;
+  text-align: left;
+  display: grid;
+  gap: 12px;
+}
+
+.confirmation-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 10px;
+}
+
+.confirmation-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.confirmation-row span {
+  color: #6b7280;
+}
+
+.confirmation-row strong {
+  text-align: right;
+}
 
   @media (max-width: 700px) {
     body { padding: 18px; }
@@ -644,14 +694,25 @@ export default {
 </section>
 
 <section id="confirmationScreen" class="hidden">
-  <div id="finalSummary" class="summary"></div>
+  <div class="confirmation">
+    <div class="success-icon">✓</div>
 
-  <h2>We’ll get in touch to confirm your appointment details.</h2>
-  <p class="hint">Your details will be sent to the shop’s scheduling system.</p>
+    <h2>Appointment Request Received</h2>
 
-  <a class="call-button" href="tel:8172980078">
-    Call (817) 298-0078
-  </a>
+    <p class="hint">
+      We’ll get in touch to confirm your appointment details.
+    </p>
+
+    <div id="finalSummary" class="confirmation-card"></div>
+
+    <p class="hint">
+      Need immediate help?
+    </p>
+
+    <a class="call-button" href="tel:8172980078">
+      Call (817) 298-0078
+    </a>
+  </div>
 </section>
 
     </main>
@@ -928,12 +989,16 @@ console.log("Appointment Data:", appointmentData);
   document.getElementById("contactScreen").classList.add("hidden");
   document.getElementById("confirmationScreen").classList.remove("hidden");
 
-  document.getElementById("finalSummary").textContent =
-    firstName + " " + lastName + " • " +
-    selectedService + " • " +
-    selectedEstimate + " • " +
-    selectedDate + " at " +
-    selectedTime;
+document.getElementById("finalSummary").innerHTML =
+  '<div class="confirmation-row"><span>Service</span><strong>' + selectedService + '</strong></div>' +
+  '<div class="confirmation-row"><span>Glass Option</span><strong>' + selectedEstimate + '</strong></div>' +
+  '<div class="confirmation-row"><span>Appointment Type</span><strong>' + selectedServiceType + '</strong></div>' +
+  '<div class="confirmation-row"><span>Vehicle</span><strong>' + vehicleYear + ' ' + vehicleMake + ' ' + vehicleModel + '</strong></div>' +
+  '<div class="confirmation-row"><span>Date</span><strong>' + selectedDate + '</strong></div>' +
+  '<div class="confirmation-row"><span>Time</span><strong>' + selectedTime + '</strong></div>' +
+  '<div class="confirmation-row"><span>Name</span><strong>' + firstName + ' ' + lastName + '</strong></div>' +
+  '<div class="confirmation-row"><span>Phone</span><strong>' + phone + '</strong></div>' +
+  '<div class="confirmation-row"><span>Email</span><strong>' + email + '</strong></div>';
 }
 
 </script>
