@@ -471,15 +471,15 @@ export default {
 <body>
   <div class="shell">
 
-    <header class="header">
-      <div class="logo">
-        <img src="https://placehold.co/210x70?text=Client+Logo" alt="Client Logo" />
-      </div>
+   <header class="header">
+  <a class="logo" id="logoLink" href="#">
+    <img id="clientLogo" src="" alt="Client Logo">
+  </a>
 
-      <a class="call-button" href="tel:8172980078">
-        Call (817) 298-0078
-      </a>
-    </header>
+  <a class="call-button" id="callButton" href="#">
+    Loading...
+  </a>
+</header>
 
     <section class="hero">
       <h1>Let's get your glass repaired.</h1>
@@ -807,6 +807,33 @@ export default {
 
   </div>
 <script>
+const clientConfig = {
+  clientId: "demo",
+  name: "VUELA Demo",
+  phone: "(541) 799-0965",
+  phoneLink: "5417990965",
+  websiteUrl: "https://vuelaco.org/",
+  logoUrl: "https://placehold.co/210x70?text=VUELA+Demo",
+  primaryColor: "#0f766e",
+  webhookUrl: "https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a",
+  redirectSeconds: 20
+};
+
+document.getElementById("logoLink").href =
+  clientConfig.websiteUrl;
+
+document.getElementById("clientLogo").src =
+  clientConfig.logoUrl;
+
+document.getElementById("clientLogo").alt =
+  clientConfig.name + " Logo";
+
+document.getElementById("callButton").href =
+  "tel:" + clientConfig.phoneLink;
+
+document.getElementById("callButton").textContent =
+  clientConfig.phone;
+  
   let selectedService = "";
   let selectedEstimate = "";
   let selectedServiceType = "";
@@ -1072,11 +1099,11 @@ vehicleModel,
   phone,
   email,
   submittedAt: new Date().toISOString(),
-  clientId: "demo",
+ clientId: clientConfig.clientId,
   schedulerVersion: "1.0"
 };
 
-fetch("https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a", {
+fetch(clientConfig.webhookUrl, {
   method: "POST",
   mode: "no-cors",
   body: JSON.stringify(appointmentData)
@@ -1100,6 +1127,12 @@ document.getElementById("finalSummary").innerHTML =
   '<div class="confirmation-row"><span>Name</span><strong>' + firstName + ' ' + lastName + '</strong></div>' +
   '<div class="confirmation-row"><span>Phone</span><strong>' + phone + '</strong></div>' +
   '<div class="confirmation-row"><span>Email</span><strong>' + email + '</strong></div>';
+
+ 
+ setTimeout(function () {
+  window.location.href = clientConfig.websiteUrl;
+}, clientConfig.redirectSeconds * 1000);
+
 }
 
 </script>
