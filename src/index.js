@@ -664,6 +664,9 @@ export default {
   let selectedZip = "";
   let selectedDate = "";
   let selectedTime = "";
+  let vehicleYear = "";
+let vehicleMake = "";
+let vehicleModel = "";
 
   const yearSelect = document.getElementById("year");
   const currentYear = new Date().getFullYear();
@@ -715,6 +718,9 @@ export default {
       alert("Please enter your year, make, and model.");
       return;
     }
+vehicleYear = year;
+vehicleMake = make;
+vehicleModel = model;
 
     document.getElementById("vehicleScreen").classList.add("hidden");
     document.getElementById("estimateScreen").classList.remove("hidden");
@@ -898,6 +904,9 @@ const appointmentData = {
   service: selectedService,
   estimate: selectedEstimate,
   serviceType: selectedServiceType,
+  vehicleYear,
+vehicleMake,
+vehicleModel,
   zip: selectedZip,
   date: selectedDate,
   time: selectedTime,
