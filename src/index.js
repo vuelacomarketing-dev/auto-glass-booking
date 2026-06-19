@@ -381,7 +381,7 @@ export default {
       <br><br>
 
       <button class="primary">
-        Book Online
+        Select
       </button>
     </div>
 
@@ -398,7 +398,7 @@ export default {
       <br><br>
 
       <button class="primary">
-        Book Online
+        Select
       </button>
     </div>
 
@@ -415,7 +415,7 @@ export default {
       <br><br>
 
       <button class="primary">
-        Book Online
+        Select
       </button>
     </div>
 
@@ -423,11 +423,36 @@ export default {
 
 </section>
 
+<section id="serviceTypeScreen" class="hidden">
+  <div class="top-row">
+    <button class="back" onclick="backToEstimate()">← Back</button>
+    <div class="progress">Service Type</div>
+  </div>
+
+  <div id="estimateSummary" class="summary"></div>
+
+  <h2>How would you like service?</h2>
+  <p class="hint">Choose whether you prefer mobile service or an in-shop appointment.</p>
+
+  <div class="grid">
+    <button class="service" onclick="selectServiceType('Mobile Service')">
+      <strong>Mobile Service</strong>
+      <span>We come to your home, workplace, or another approved location.</span>
+    </button>
+
+    <button class="service" onclick="selectServiceType('Shop Appointment')">
+      <strong>Shop Appointment</strong>
+      <span>Bring your vehicle to the shop for your scheduled service.</span>
+    </button>
+  </div>
+</section>
+
     </main>
 
   </div>
 
 <script>
+let selectedEstimate = "";
   let selectedService = "";
 
   const yearSelect = document.getElementById("year");
@@ -474,6 +499,25 @@ export default {
     document.getElementById("vehicleSummary").textContent =
       selectedService + " • " + year + " " + make + " " + model;
   }
+
+  function selectEstimate(estimate) {
+  selectedEstimate = estimate;
+
+  document.getElementById("estimateScreen").classList.add("hidden");
+  document.getElementById("serviceTypeScreen").classList.remove("hidden");
+
+  document.getElementById("estimateSummary").textContent =
+    selectedService + " • " + selectedEstimate;
+}
+
+function backToEstimate() {
+  document.getElementById("serviceTypeScreen").classList.add("hidden");
+  document.getElementById("estimateScreen").classList.remove("hidden");
+}
+
+function selectServiceType(type) {
+  alert("Next step: ZIP code for " + type);
+}
 </script>
 
 </body>
