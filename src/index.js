@@ -592,12 +592,13 @@ export default {
     </main>
 
   </div>
-
 <script>
   let selectedService = "";
   let selectedEstimate = "";
+  let selectedServiceType = "";
   let selectedZip = "";
   let selectedDate = "";
+  let selectedTime = "";
 
   const yearSelect = document.getElementById("year");
   const currentYear = new Date().getFullYear();
@@ -608,21 +609,23 @@ export default {
     option.textContent = year;
     yearSelect.appendChild(option);
   }
-  
-const availability = {
-  "June 22": ["8:00 AM", "10:00 AM", "2:00 PM"],
-  "June 23": ["9:00 AM", "11:00 AM"],
-  "June 24": [],
-  "June 25": ["12:00 PM", "3:00 PM"],
-  "June 26": ["8:30 AM", "1:00 PM"],
-  "June 27": ["10:00 AM"],
-  "June 29": ["9:00 AM", "2:00 PM"],
-  "June 30": []
-};
+
+  const demoAvailability = {
+    "2026-06-22": ["8:00 AM", "10:00 AM", "2:00 PM"],
+    "2026-06-23": ["9:00 AM", "11:00 AM"],
+    "2026-06-24": [],
+    "2026-06-25": ["12:00 PM", "3:00 PM"],
+    "2026-06-26": ["8:30 AM", "1:00 PM"],
+    "2026-06-27": ["10:00 AM"],
+    "2026-06-29": ["9:00 AM", "2:00 PM"],
+    "2026-06-30": []
+  };
+
+  let calendarMonth = 5;
+  let calendarYear = 2026;
 
   function selectService(service) {
     selectedService = service;
-
     document.getElementById("serviceScreen").classList.add("hidden");
     document.getElementById("vehicleScreen").classList.remove("hidden");
     document.getElementById("selectedServiceSummary").textContent = service;
@@ -656,86 +659,155 @@ const availability = {
   }
 
   function selectEstimate(estimate) {
-  selectedEstimate = estimate;
+    selectedEstimate = estimate;
 
-  document.getElementById("estimateScreen").classList.add("hidden");
-  document.getElementById("serviceTypeScreen").classList.remove("hidden");
+    document.getElementById("estimateScreen").classList.add("hidden");
+    document.getElementById("serviceTypeScreen").classList.remove("hidden");
 
-  document.getElementById("estimateSummary").textContent =
-    selectedService + " • " + selectedEstimate;
-}
-
-function backToEstimate() {
-  document.getElementById("serviceTypeScreen").classList.add("hidden");
-  document.getElementById("estimateScreen").classList.remove("hidden");
-}
-
-function selectServiceType(type) {
-  alert("Next step: ZIP code for " + type);
-}
-
-let selectedServiceType = "";
-
-function selectServiceType(type) {
-  selectedServiceType = type;
-
-  document.getElementById("serviceTypeScreen").classList.add("hidden");
-  document.getElementById("zipScreen").classList.remove("hidden");
-
-  document.getElementById("zipSummary").textContent =
-    selectedService + " • " + selectedEstimate + " • " + selectedServiceType;
-}
-
-function backToServiceType() {
-  document.getElementById("zipScreen").classList.add("hidden");
-  document.getElementById("serviceTypeScreen").classList.remove("hidden");
-}
-
-function continueToDate() {
-  const zip = document.getElementById("zipCode").value;
-
-  if (!zip) {
-    alert("Please enter your ZIP code.");
-    return;
+    document.getElementById("estimateSummary").textContent =
+      selectedService + " • " + selectedEstimate;
   }
 
-  selectedZip = zip;
+  function backToEstimate() {
+    document.getElementById("serviceTypeScreen").classList.add("hidden");
+    document.getElementById("estimateScreen").classList.remove("hidden");
+  }
 
-  document.getElementById("zipScreen").classList.add("hidden");
-  document.getElementById("dateScreen").classList.remove("hidden");
+  function selectServiceType(type) {
+    selectedServiceType = type;
 
-  document.getElementById("dateSummary").textContent =
-    selectedService + " • " + selectedEstimate + " • " + selectedServiceType + " • " + selectedZip;
-}
+    document.getElementById("serviceTypeScreen").classList.add("hidden");
+    document.getElementById("zipScreen").classList.remove("hidden");
 
-function backToZip() {
-  document.getElementById("dateScreen").classList.add("hidden");
-  document.getElementById("zipScreen").classList.remove("hidden");
-}
+    document.getElementById("zipSummary").textContent =
+      selectedService + " • " + selectedEstimate + " • " + selectedServiceType;
+  }
 
-function selectDate(date) {
-  selectedDate = date;
+  function backToServiceType() {
+    document.getElementById("zipScreen").classList.add("hidden");
+    document.getElementById("serviceTypeScreen").classList.remove("hidden");
+  }
 
-  const times = availability[date] || [];
-  const timesArea = document.getElementById("timesArea");
+  function continueToDate() {
+    const zip = document.getElementById("zipCode").value;
 
-  if (times.length === 0) {
+    if (!zip) {
+      alert("Please enter your ZIP code.");
+      return;
+    }
+
+    selectedZip = zip;
+
+    document.getElementById("zipScreen").classList.add("hidden");
+    document.getElementById("dateScreen").classList.remove("hidden");
+
+    document.getElementById("dateSummary").textContent =
+      selectedService + " • " + selectedEstimate + " • " + selectedServiceType + " • " + selectedZip;
+
+    renderCalendar();
+  }
+
+  function backToZip() {
+    document.getElementById("dateScreen").classList.add("hidden");
+    document.getElementById("zipScreen").classList.remove("hidden");
+  }
+
+  function renderCalendar() {
+    const calendarGrid = document.getElementById("calendarGrid");
+    const calendarMonthTitle = document.getElementById("calendarMonth");
+
+    calendarGrid.innerHTML = "";
+
+    const monthName = new Date(calendarYear, calendarMonth).toLocaleString("default", {
+      month: "long",
+      year: "numeric"
+    });
+
+    calendarMonthTitle.textContent = monthName;
+
+    const firstDay = new Date(calendarYear, calendarMonth, 1).getDay();
+    const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+      const empty = document.createElement("div");
+      calendarGrid.appendChild(empty);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateKey =
+        calendarYear + "-" +
+        String(calendarMonth + 1).padStart(2, "0") + "-" +
+        String(day).padStart(2, "0");
+
+      const button = document.createElement("button");
+      button.className = "calendar-date";
+      button.textContent = day;
+
+      if (!demoAvailability.hasOwnProperty(dateKey)) {
+        button.classList.add("unavailable");
+        button.disabled = true;
+      } else {
+        button.onclick = function () {
+          selectDate(dateKey);
+        };
+      }
+
+      calendarGrid.appendChild(button);
+    }
+  }
+
+  function changeMonth(direction) {
+    calendarMonth += direction;
+
+    if (calendarMonth < 0) {
+      calendarMonth = 11;
+      calendarYear--;
+    }
+
+    if (calendarMonth > 11) {
+      calendarMonth = 0;
+      calendarYear++;
+    }
+
+    document.getElementById("timesArea").innerHTML = "";
+    renderCalendar();
+  }
+
+  function selectDate(dateKey) {
+    selectedDate = dateKey;
+
+    const times = demoAvailability[dateKey] || [];
+    const timesArea = document.getElementById("timesArea");
+
+    document.querySelectorAll(".calendar-date").forEach(function(button) {
+      button.classList.remove("selected");
+    });
+
+    event.target.classList.add("selected");
+
+    const readableDate = new Date(dateKey + "T00:00:00").toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    });
+
+    if (times.length === 0) {
+      timesArea.innerHTML =
+        '<div class="no-times">No available times for ' + readableDate + '. Please choose another date.</div>';
+      return;
+    }
+
     timesArea.innerHTML =
-      '<div class="no-times">No available times for this date. Please choose another date.</div>';
-    return;
+      '<h3>Available times for ' + readableDate + '</h3>' +
+      times.map(function(time) {
+        return '<button class="time-button" onclick="selectTime(\\'' + time + '\\')">' + time + '</button>';
+      }).join("");
   }
 
-  timesArea.innerHTML =
-    '<h3>Available times for ' + date + '</h3>' +
-    times.map(function(time) {
-      return '<button class="time-button" onclick="selectTime(\\'' + time + '\\')">' + time + '</button>';
-    }).join("");
-}
-
-function selectTime(time) {
-  selectedTime = time;
-  alert("Next step: contact info for " + selectedDate + " at " + selectedTime);
-}
+  function selectTime(time) {
+    selectedTime = time;
+    alert("Next step: contact info for " + selectedDate + " at " + selectedTime);
+  }
 </script>
 </body>
 </html>
