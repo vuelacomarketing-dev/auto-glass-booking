@@ -456,6 +456,27 @@ export default {
   </div>
 </section>
 
+<section id="zipScreen" class="hidden">
+  <div class="top-row">
+    <button class="back" onclick="backToServiceType()">← Back</button>
+    <div class="progress">Location</div>
+  </div>
+
+  <div id="zipSummary" class="summary"></div>
+
+  <h2>Where do you need service?</h2>
+  <p class="hint">Enter the ZIP code for your mobile service location or preferred shop area.</p>
+
+  <div class="form">
+    <div>
+      <label>ZIP Code</label>
+      <input id="zipCode" type="text" placeholder="Example: 75001" maxlength="5" />
+    </div>
+
+    <button class="primary" onclick="continueToDate()">Continue</button>
+  </div>
+</section>
+
     </main>
 
   </div>
@@ -528,9 +549,33 @@ function selectServiceType(type) {
   alert("Next step: ZIP code for " + type);
 }
 
+let selectedServiceType = "";
+
 function selectServiceType(type) {
-  alert("Selected: " + type);
-} 
+  selectedServiceType = type;
+
+  document.getElementById("serviceTypeScreen").classList.add("hidden");
+  document.getElementById("zipScreen").classList.remove("hidden");
+
+  document.getElementById("zipSummary").textContent =
+    selectedService + " • " + selectedEstimate + " • " + selectedServiceType;
+}
+
+function backToServiceType() {
+  document.getElementById("zipScreen").classList.add("hidden");
+  document.getElementById("serviceTypeScreen").classList.remove("hidden");
+}
+
+function continueToDate() {
+  const zip = document.getElementById("zipCode").value;
+
+  if (!zip) {
+    alert("Please enter your ZIP code.");
+    return;
+  }
+
+  alert("Next step: choose a date for ZIP " + zip);
+}
 
 </script>
 
