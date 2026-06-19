@@ -1073,7 +1073,19 @@ vehicleModel,
   email
 };
 
-console.log("Appointment Data:", appointmentData);
+fetch("https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(appointmentData)
+})
+.then(response => {
+  console.log("Webhook sent successfully");
+})
+.catch(error => {
+  console.error("Webhook error:", error);
+});
   document.getElementById("contactScreen").classList.add("hidden");
   document.getElementById("confirmationScreen").classList.remove("hidden");
 
