@@ -607,6 +607,53 @@ export default {
 <div id="timesArea" class="times-area"></div>
 </section>
 
+<section id="contactScreen" class="hidden">
+  <div class="top-row">
+    <button class="back" onclick="backToDate()">← Back</button>
+    <div class="progress">Contact</div>
+  </div>
+
+  <div id="contactSummary" class="summary"></div>
+
+  <h2>Almost done.</h2>
+  <p class="hint">Enter your contact information so the shop can confirm your appointment.</p>
+
+  <div class="form">
+    <div>
+      <label>First Name</label>
+      <input id="firstName" type="text" placeholder="First name" />
+    </div>
+
+    <div>
+      <label>Last Name</label>
+      <input id="lastName" type="text" placeholder="Last name" />
+    </div>
+
+    <div>
+      <label>Phone</label>
+      <input id="phone" type="tel" placeholder="Phone number" />
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input id="email" type="email" placeholder="Email address" />
+    </div>
+
+    <button class="primary" onclick="confirmAppointment()">Confirm Appointment</button>
+  </div>
+</section>
+
+<section id="confirmationScreen" class="hidden">
+  <div id="finalSummary" class="summary"></div>
+
+  <h2>Your appointment request has been received.</h2>
+  <p class="hint">Your details will be sent to the shop’s scheduling system.</p>
+
+  <a class="call-button" href="tel:8172980078">
+    Call (817) 298-0078
+  </a>
+</section>
+
     </main>
 
   </div>
@@ -822,10 +869,43 @@ export default {
       }).join("");
   }
 
-  function selectTime(time) {
-    selectedTime = time;
-    alert("Next step: contact info for " + selectedDate + " at " + selectedTime);
+function selectTime(time) {
+  selectedTime = time;
+
+  document.getElementById("dateScreen").classList.add("hidden");
+  document.getElementById("contactScreen").classList.remove("hidden");
+
+  document.getElementById("contactSummary").textContent =
+    selectedService + " • " +
+    selectedEstimate + " • " +
+    selectedServiceType + " • " +
+    selectedZip + " • " +
+    selectedDate + " • " +
+    selectedTime;
+}
+
+function confirmAppointment() {
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const phone = document.getElementById("phone").value;
+  const email = document.getElementById("email").value;
+
+  if (!firstName || !lastName || !phone || !email) {
+    alert("Please enter your name, phone, and email.");
+    return;
   }
+
+  document.getElementById("contactScreen").classList.add("hidden");
+  document.getElementById("confirmationScreen").classList.remove("hidden");
+
+  document.getElementById("finalSummary").textContent =
+    firstName + " " + lastName + " • " +
+    selectedService + " • " +
+    selectedEstimate + " • " +
+    selectedDate + " at " +
+    selectedTime;
+}
+
 </script>
 </body>
 </html>
