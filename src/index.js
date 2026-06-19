@@ -1071,7 +1071,7 @@ vehicleModel,
   lastName,
   phone,
   email,
-    submittedAt: new Date().toISOString(),
+  submittedAt: new Date().toISOString(),
   clientId: "demo",
   schedulerVersion: "1.0"
 };
