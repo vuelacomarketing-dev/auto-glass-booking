@@ -350,7 +350,7 @@ export default {
         </div>
       </section>
 
-      <section id="estimateScreen" class="hidden">
+   <section id="estimateScreen" class="hidden">
 
   <div class="top-row">
     <button class="back" onclick="backToVehicle()">← Back</button>
@@ -370,6 +370,7 @@ export default {
 
     <div class="service">
       <strong>Aftermarket Glass</strong>
+
       <span>
         High quality replacement glass that meets safety standards.
       </span>
@@ -380,13 +381,16 @@ export default {
 
       <br><br>
 
-      <button class="primary">
+      <button
+        class="primary"
+        onclick="selectEstimate('Aftermarket Glass')">
         Select
       </button>
     </div>
 
     <div class="service">
       <strong>OEM Glass</strong>
+
       <span>
         Manufactured to the same specifications as your original glass.
       </span>
@@ -397,13 +401,16 @@ export default {
 
       <br><br>
 
-      <button class="primary">
+      <button
+        class="primary"
+        onclick="selectEstimate('OEM Glass')">
         Select
       </button>
     </div>
 
     <div class="service">
       <strong>ADAS Package</strong>
+
       <span>
         Includes calibration for cameras and advanced safety systems.
       </span>
@@ -414,7 +421,9 @@ export default {
 
       <br><br>
 
-      <button class="primary">
+      <button
+        class="primary"
+        onclick="selectEstimate('ADAS Package')">
         Select
       </button>
     </div>
@@ -518,6 +527,11 @@ function backToEstimate() {
 function selectServiceType(type) {
   alert("Next step: ZIP code for " + type);
 }
+
+function selectServiceType(type) {
+  alert("Selected: " + type);
+} 
+
 </script>
 
 </body>
