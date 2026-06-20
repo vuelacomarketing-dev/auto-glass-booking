@@ -889,6 +889,16 @@ businessHours: {
   }
 },
 
+blockedDates: [
+  "2026-07-04"
+],
+customAvailability: {
+  "2026-07-03": [
+    "8:00 AM",
+    "9:00 AM",
+    "10:00 AM"
+  ]
+},
   webhookUrl: "https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a",
   redirectSeconds: 20
 };
@@ -931,6 +941,13 @@ let vehicleModel = "";
   }
 
   function generateTimesForDate(dateKey) {
+  if (clientConfig.blockedDates.includes(dateKey)) {
+  return [];
+}
+
+if (clientConfig.customAvailability[dateKey]) {
+  return clientConfig.customAvailability[dateKey];
+}
   const date = new Date(dateKey + "T00:00:00");
   const dayNames = [
     "sunday",
