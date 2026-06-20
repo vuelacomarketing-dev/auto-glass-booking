@@ -425,6 +425,10 @@ export default {
   background: var(--primary-soft);
 }
 
+.progress {
+  display: none;
+}
+
 @media (max-width: 700px) {
 
   .confirmation-row {
