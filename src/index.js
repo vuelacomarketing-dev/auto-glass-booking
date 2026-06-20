@@ -3,7 +3,27 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname === "/admin") {
-      const adminHtml = `
+       const adminHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scheduler Admin</title>
+</head>
+<body>
+  <h1>Scheduler Admin</h1>
+  <p>Admin panel coming soon.</p>
+</body>
+</html>
+`;
+
+      return new Response(adminHtml, {
+        headers: {
+          "content-type": "text/html;charset=UTF-8"
+        }
+      });
+    }
+
+     const html = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -1404,7 +1424,6 @@ function startNewQuote() {
 </body>
 </html>
 `;
-
     return new Response(html, {
       headers: { "content-type": "text/html;charset=UTF-8" },
     });
