@@ -634,17 +634,7 @@ export default {
 
   <h2>How would you like service?</h2>
   <p class="hint">Choose whether you prefer mobile service or an in-shop appointment.</p>
-
-  <div class="grid">
-    <button class="service" onclick="selectServiceType('Mobile Service')">
-      <strong>Mobile Service</strong>
-      <span>We come to your home, workplace, or another approved location.</span>
-    </button>
-
-    <button class="service" onclick="selectServiceType('Shop Appointment')">
-      <strong>Shop Appointment</strong>
-      <span>Bring your vehicle to the shop for your scheduled service.</span>
-    </button>
+    <div id="serviceTypeGrid" class="grid"></div>
   </div>
 </section>
 
@@ -824,6 +814,18 @@ services: [
     active: true
   }
 ],
+
+serviceTypes: [
+  {
+    title: "Mobile Service",
+    description: "We come to your location."
+  },
+  {
+    title: "In-Shop Service",
+    description: "Bring your vehicle to our shop."
+  }
+],
+
 estimateOptions: [
   {
     badge: "Most Popular",
@@ -844,6 +846,7 @@ estimateOptions: [
     priceRange: "$625 - $850"
   }
 ],
+
   webhookUrl: "https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a",
   redirectSeconds: 20
 };
@@ -863,6 +866,7 @@ document.documentElement.style.setProperty("--primary-dark", clientConfig.primar
 document.documentElement.style.setProperty("--primary-soft", clientConfig.primarySoft);
 renderEstimateOptions();
 renderServices();
+renderServiceTypes();
   
   let selectedService = "";
   let selectedEstimate = "";
@@ -1002,6 +1006,22 @@ function renderEstimateOptions() {
     document.getElementById("zipSummary").textContent =
       selectedService + " • " + selectedEstimate + " • " + selectedServiceType;
   }
+  
+function renderServiceTypes() {
+  const grid = document.getElementById("serviceTypeGrid");
+
+  grid.innerHTML = "";
+
+  clientConfig.serviceTypes.forEach(function(type) {
+
+    grid.innerHTML +=
+      '<button class="service" onclick="selectServiceType(&quot;' + type.title + '&quot;)">' +
+        '<strong>' + type.title + '</strong>' +
+        '<span>' + type.description + '</span>' +
+      '</button>';
+
+  });
+}
 
   function backToServiceType() {
     document.getElementById("zipScreen").classList.add("hidden");
