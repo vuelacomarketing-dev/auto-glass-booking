@@ -7,38 +7,46 @@ export default {
 <!DOCTYPE html>
 <html>
 <h1>VUELA Scheduler Admin</h1>
+
 <label>Select Client</label>
 <select>
   <option>VUELA Demo</option>
   <option>Yazmin Auto Glass</option>
   <option>Garland Auto Glass</option>
 </select>
+
+<hr>
+
 <h2>Client Information</h2>
 
 <label>Business Name</label>
-<input type="text" />
+<input type="text" id="businessName">
 
 <label>Phone</label>
-<input type="text" />
+<input type="text" id="phone">
 
 <label>Website URL</label>
-<input type="text" />
+<input type="text" id="websiteUrl">
 
 <label>Logo URL</label>
-<input type="text" />
+<input type="text" id="logoUrl">
+
+<hr>
 
 <h2>Branding</h2>
 
 <label>Primary Color</label>
-<input type="text" />
+<input type="text" id="primaryColor">
 
 <label>Primary Dark</label>
-<input type="text" />
+<input type="text" id="primaryDark">
 
 <label>Primary Soft</label>
-<input type="text" />
+<input type="text" id="primarySoft">
 
-<button>Save Settings</button>
+<br><br>
+
+<button id="saveButton">Save Settings</button>
 </html>
 `;
 
