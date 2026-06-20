@@ -126,47 +126,31 @@ input[type="color"]::-webkit-color-swatch {
 
 <hr>
 
+<hr>
+
 <h2>Services</h2>
 
-<label>
-  <input type="checkbox" checked>
-  Windshield Replacement
-</label>
+<p>Manage the services shown on the scheduler.</p>
 
-<label>
-  <input type="checkbox" checked>
-  Windshield Repair
-</label>
+<button id="addServiceButton">
+  + Add Service
+</button>
 
-<label>
-  <input type="checkbox" checked>
-  Door Glass
-</label>
+<div id="adminServicesList">
 
-<label>
-  <input type="checkbox" checked>
-  Back Glass
-</label>
+  <div class="serviceRow">
+    Windshield Replacement
+    <button>Edit</button>
+    <button>Delete</button>
+  </div>
 
-<label>
-  <input type="checkbox" checked>
-  Quarter Glass
-</label>
+  <div class="serviceRow">
+    Windshield Repair
+    <button>Edit</button>
+    <button>Delete</button>
+  </div>
 
-<label>
-  <input type="checkbox" checked>
-  ADAS Calibration
-</label>
-
-<label>
-  <input type="checkbox" checked>
-  Sunroof Glass
-</label>
-
-<label>
-  <input type="checkbox" checked>
-  Vent Glass
-</label>
+</div>
 <hr>
 
 <h2>Estimates</h2>
