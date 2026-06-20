@@ -849,6 +849,7 @@ estimateOptions: [
 
 slotDurationMinutes: 60,
 bufferMinutes: 15,
+maxDaysOut: 40,
 
 businessHours: {
   sunday: {
