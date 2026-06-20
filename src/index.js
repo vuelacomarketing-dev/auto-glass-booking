@@ -539,37 +539,7 @@ export default {
         <h2>What service do you need?</h2>
         <p class="hint">Choose the option that best matches your auto glass issue.</p>
 
-        <div class="grid">
-          <button class="service" onclick="selectService('Windshield Replacement')">
-            <strong>Windshield Replacement</strong>
-            <span>Cracked or damaged windshield requiring replacement.</span>
-          </button>
-
-          <button class="service" onclick="selectService('Windshield Repair')">
-            <strong>Windshield Repair</strong>
-            <span>Small chips and minor damage that may be repairable.</span>
-          </button>
-
-          <button class="service" onclick="selectService('Door Glass')">
-            <strong>Door Glass</strong>
-            <span>Driver or passenger side window replacement.</span>
-          </button>
-
-          <button class="service" onclick="selectService('Back Glass')">
-            <strong>Back Glass</strong>
-            <span>Rear window replacement service.</span>
-          </button>
-
-          <button class="service" onclick="selectService('Quarter Glass')">
-            <strong>Quarter Glass</strong>
-            <span>Small rear side window replacement.</span>
-          </button>
-
-          <button class="service" onclick="selectService('ADAS Calibration')">
-            <strong>ADAS Calibration</strong>
-            <span>Calibration for vehicle cameras and safety systems.</span>
-          </button>
-        </div>
+<div id="serviceGrid" class="grid"></div>
       </section>
 
       <section id="vehicleScreen" class="hidden">
@@ -804,6 +774,56 @@ const clientConfig = {
   primaryColor: "#0f766e",
   primaryDark: "#115e59",
 primarySoft: "#e6f5f3",
+services: [
+  {
+    id: "windshield_replacement",
+    title: "Windshield Replacement",
+    description: "Cracked or damaged windshield requiring replacement.",
+    active: true
+  },
+  {
+    id: "windshield_repair",
+    title: "Windshield Repair",
+    description: "Small chips and minor damage that may be repairable.",
+    active: true
+  },
+  {
+    id: "door_glass",
+    title: "Door Glass",
+    description: "Driver or passenger side window replacement.",
+    active: true
+  },
+  {
+    id: "back_glass",
+    title: "Back Glass",
+    description: "Rear window replacement service.",
+    active: true
+  },
+  {
+    id: "quarter_glass",
+    title: "Quarter Glass",
+    description: "Small rear side window replacement.",
+    active: true
+  },
+  {
+    id: "adas_calibration",
+    title: "ADAS Calibration",
+    description: "Calibration for vehicle cameras and safety systems.",
+    active: true
+  },
+  {
+    id: "sunroof_glass",
+    title: "Sunroof Glass",
+    description: "Sunroof and moonroof glass replacement.",
+    active: true
+  },
+  {
+    id: "vent_glass",
+    title: "Vent Glass",
+    description: "Small side vent glass replacement.",
+    active: true
+  }
+],
 estimateOptions: [
   {
     badge: "Most Popular",
@@ -842,6 +862,7 @@ document.documentElement.style.setProperty("--primary-color", clientConfig.prima
 document.documentElement.style.setProperty("--primary-dark", clientConfig.primaryDark);
 document.documentElement.style.setProperty("--primary-soft", clientConfig.primarySoft);
 renderEstimateOptions();
+renderServices();
   
   let selectedService = "";
   let selectedEstimate = "";
@@ -883,7 +904,26 @@ let vehicleModel = "";
     document.getElementById("vehicleScreen").classList.remove("hidden");
     document.getElementById("selectedServiceSummary").textContent = service;
   }
+  
+function renderServices() {
+  const grid = document.getElementById("serviceGrid");
 
+  grid.innerHTML = "";
+
+  clientConfig.services.forEach(function(service) {
+
+    if (service.active === false) {
+      return;
+    }
+
+    grid.innerHTML +=
+      '<button class="service" onclick="selectService(&quot;' + service.title + '&quot;)">' +
+        '<strong>' + service.title + '</strong>' +
+        '<span>' + service.description + '</span>' +
+      '</button>';
+
+  });
+}
   function goBack() {
     document.getElementById("vehicleScreen").classList.add("hidden");
     document.getElementById("serviceScreen").classList.remove("hidden");
