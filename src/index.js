@@ -2,7 +2,7 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
-    if (url.pathname === "/admin") {
+    if (url.pathname === "/vla-quaty-541m-admin") {
        const adminHtml = `
 <!DOCTYPE html>
 <html>
