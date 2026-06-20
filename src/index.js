@@ -77,6 +77,15 @@ input[type="color"]::-webkit-color-swatch {
   border: 2px solid #d1d5db;
   border-radius: 50%;
 }
+#addServiceButton {
+  background: #0f766e;
+  color: white;
+  margin-bottom: 15px;
+}
+
+#adminServicesList {
+  margin-top: 15px;
+}
   </style>
 </head>
 
@@ -128,29 +137,20 @@ input[type="color"]::-webkit-color-swatch {
 
 <hr>
 
+<hr>
+
 <h2>Services</h2>
 
-<p>Manage the services shown on the scheduler.</p>
+<p>Default services are included, but they can be edited, removed, or expanded.</p>
 
 <button id="addServiceButton">
   + Add Service
 </button>
 
 <div id="adminServicesList">
-
-  <div class="serviceRow">
-    Windshield Replacement
-    <button>Edit</button>
-    <button>Delete</button>
-  </div>
-
-  <div class="serviceRow">
-    Windshield Repair
-    <button>Edit</button>
-    <button>Delete</button>
-  </div>
-
+  <p>Services will load here.</p>
 </div>
+
 <hr>
 
 <h2>Estimates</h2>
