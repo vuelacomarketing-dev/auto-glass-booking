@@ -405,6 +405,20 @@ export default {
   border-color: #dc2626 !important;
 }
 
+.new-quote-button {
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.new-quote-button:hover {
+  background: var(--primary-soft);
+}
+
 @media (max-width: 700px) {
 
   .confirmation-row {
@@ -489,6 +503,10 @@ export default {
     alt="Client Logo"
     onerror="this.src='https://vuelaco.org/default-logo.png';">
 </a>
+
+<button class="new-quote-button" onclick="startNewQuote()">
+  Start New Quote
+</button>
 
   <a class="call-button" id="callButton" href="#">
     Loading...
@@ -1146,6 +1164,9 @@ document.getElementById("finalSummary").innerHTML =
 
 }
 
+function startNewQuote() {
+  location.reload();
+}
 </script>
 </body>
 </html>
