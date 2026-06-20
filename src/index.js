@@ -1180,8 +1180,41 @@ document.getElementById("finalSummary").innerHTML =
 }
 
 function startNewQuote() {
-  location.reload();
+  selectedService = "";
+  selectedEstimate = "";
+  selectedServiceType = "";
+  selectedZip = "";
+  selectedDate = "";
+  selectedTime = "";
+  vehicleYear = "";
+  vehicleMake = "";
+  vehicleModel = "";
+
+  document.querySelectorAll("main section").forEach(function(section) {
+    section.classList.add("hidden");
+  });
+
+  document.getElementById("serviceScreen").classList.remove("hidden");
+
+  document.querySelectorAll("input").forEach(function(input) {
+    input.value = "";
+  });
+
+  document.querySelectorAll("select").forEach(function(select) {
+    select.selectedIndex = 0;
+  });
+
+  document.querySelectorAll(".summary").forEach(function(summary) {
+    summary.textContent = "";
+  });
+
+  document.querySelectorAll(".error-message").forEach(function(error) {
+    error.textContent = "";
+  });
+
+  document.getElementById("timesArea").innerHTML = "";
 }
+
 </script>
 </body>
 </html>
