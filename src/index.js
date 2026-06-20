@@ -205,10 +205,6 @@ input[type="color"]::-webkit-color-swatch {
 
 <br><br>
 
-<button id="editHoursButton">
-  Edit Business Hours
-</button>
-
 <h3>Business Hours</h3>
 
 <div class="dayRow">
@@ -254,6 +250,18 @@ input[type="color"]::-webkit-color-swatch {
 </div>
 
 <hr>
+
+<h3>Blocked Dates</h3>
+
+<p>Prevent customers from booking on specific dates.</p>
+
+<button id="addBlockedDateButton">
+  + Add Blocked Date
+</button>
+
+<div id="blockedDatesList">
+  <p>No blocked dates configured.</p>
+</div>
 
 <hr>
 
