@@ -10,6 +10,13 @@ export default {
   <title>VUELA Scheduler Admin</title>
 
   <style>
+    .admin-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 22px;
+}
     body {
       max-width: 900px;
       margin: 40px auto;
@@ -122,191 +129,181 @@ input[type="color"]::-webkit-color-swatch {
 
 <h1>VUELA Scheduler Admin</h1>
 
-<button id="newClientButton">
-  + New Client
-</button>
+<div class="admin-card">
+  <button id="newClientButton">
+    + New Client
+  </button>
 
-<label>Select Client</label>
-<select>
-  <option>VUELA Demo</option>
-  <option>Yazmin Auto Glass</option>
-  <option>Garland Auto Glass</option>
-</select>
-
-<hr>
-
-<h2>Client Information</h2>
-
-<label>Business Name</label>
-<input type="text" id="businessName">
-
-<label>Phone</label>
-<input type="text" id="phone">
-
-<label>Website URL</label>
-<input type="text" id="websiteUrl">
-
-<label>Logo URL</label>
-<input type="text" id="logoUrl">
-
-<hr>
-
-<h2>Branding</h2>
-
-<label>Primary Color</label>
-<input type="color" id="primaryColor" value="#0f766e">
-
-<label>Primary Dark</label>
-<input type="color" id="primaryDark" value="#115e59">
-
-<label>Primary Soft</label>
-<input type="color" id="primarySoft" value="#e6f5f3">
-
-<hr>
-
-<hr>
-
-<hr>
-
-<h2>Services</h2>
-
-<p>Default services are included, but they can be edited, removed, or expanded.</p>
-
-<button id="addServiceButton">
-  + Add Service
-</button>
-
-<div id="adminServicesList">
-  <p>Services will load here.</p>
+  <label>Select Client</label>
+  <select>
+    <option>VUELA Demo</option>
+    <option>Yazmin Auto Glass</option>
+    <option>Garland Auto Glass</option>
+  </select>
 </div>
 
-<hr>
-<hr>
+<div class="admin-card">
+  <h2>Client Information</h2>
 
-<h2>Estimates</h2>
+  <label>Business Name</label>
+  <input type="text" id="businessName">
 
-<p>Manage estimate options shown to customers.</p>
+  <label>Phone</label>
+  <input type="text" id="phone">
 
-<button id="addEstimateButton">
-  + Add Estimate Option
-</button>
+  <label>Website URL</label>
+  <input type="text" id="websiteUrl">
 
-<div id="adminEstimateList">
-  <p>Estimate options will load here.</p>
+  <label>Logo URL</label>
+  <input type="text" id="logoUrl">
 </div>
 
-<hr>
+<div class="admin-card">
+  <h2>Branding</h2>
 
-<hr>
+  <label>Primary Color</label>
+  <input type="color" id="primaryColor" value="#0f766e">
 
-<h2>Scheduling</h2>
+  <label>Primary Dark</label>
+  <input type="color" id="primaryDark" value="#115e59">
 
-<p>Manage appointment availability and booking rules.</p>
-
-<label>Appointment Length (Minutes)</label>
-<input type="number" id="slotDuration" value="60">
-
-<label>Buffer Between Appointments (Minutes)</label>
-<input type="number" id="bufferMinutes" value="15">
-
-<label>Maximum Days Out Customers Can Book</label>
-<input type="number" id="maxDaysOut" value="40">
-
-<br><br>
-
-<h3>Business Hours</h3>
-
-<div class="dayRow">
-  <label><input type="checkbox" checked> Monday Open</label>
-  <input type="time" value="08:00">
-  <input type="time" value="17:00">
+  <label>Primary Soft</label>
+  <input type="color" id="primarySoft" value="#e6f5f3">
 </div>
 
-<div class="dayRow">
-  <label><input type="checkbox" checked> Tuesday Open</label>
-  <input type="time" value="08:00">
-  <input type="time" value="17:00">
+<div class="admin-card">
+  <h2>Services</h2>
+
+  <p>Default services are included, but they can be edited, removed, or expanded.</p>
+
+  <button id="addServiceButton">
+    + Add Service
+  </button>
+
+  <div id="adminServicesList">
+    <p>Services will load here.</p>
+  </div>
 </div>
 
-<div class="dayRow">
-  <label><input type="checkbox" checked> Wednesday Open</label>
-  <input type="time" value="08:00">
-  <input type="time" value="17:00">
+<div class="admin-card">
+  <h2>Estimates</h2>
+
+  <p>Manage estimate options shown to customers.</p>
+
+  <button id="addEstimateButton">
+    + Add Estimate Option
+  </button>
+
+  <div id="adminEstimateList">
+    <p>Estimate options will load here.</p>
+  </div>
 </div>
 
-<div class="dayRow">
-  <label><input type="checkbox" checked> Thursday Open</label>
-  <input type="time" value="08:00">
-  <input type="time" value="17:00">
+<div class="admin-card">
+  <h2>Scheduling</h2>
+
+  <p>Manage appointment availability and booking rules.</p>
+
+  <label>Appointment Length Minutes</label>
+  <input type="number" id="slotDuration" value="60">
+
+  <label>Buffer Between Appointments Minutes</label>
+  <input type="number" id="bufferMinutes" value="15">
+
+  <label>Maximum Days Out Customers Can Book</label>
+  <input type="number" id="maxDaysOut" value="40">
+
+  <h3>Business Hours</h3>
+  <p>Set your operating hours and available days.</p>
+
+  <div class="dayRow">
+    <label><input type="checkbox" checked> Monday Open</label>
+    <input type="time" value="08:00">
+    <input type="time" value="17:00">
+  </div>
+
+  <div class="dayRow">
+    <label><input type="checkbox" checked> Tuesday Open</label>
+    <input type="time" value="08:00">
+    <input type="time" value="17:00">
+  </div>
+
+  <div class="dayRow">
+    <label><input type="checkbox" checked> Wednesday Open</label>
+    <input type="time" value="08:00">
+    <input type="time" value="17:00">
+  </div>
+
+  <div class="dayRow">
+    <label><input type="checkbox" checked> Thursday Open</label>
+    <input type="time" value="08:00">
+    <input type="time" value="17:00">
+  </div>
+
+  <div class="dayRow">
+    <label><input type="checkbox" checked> Friday Open</label>
+    <input type="time" value="08:00">
+    <input type="time" value="17:00">
+  </div>
+
+  <div class="dayRow">
+    <label><input type="checkbox" checked> Saturday Open</label>
+    <input type="time" value="09:00">
+    <input type="time" value="14:00">
+  </div>
+
+  <div class="dayRow">
+    <label><input type="checkbox"> Sunday Open</label>
+    <input type="time">
+    <input type="time">
+  </div>
+
+  <h3>Blocked Dates</h3>
+
+  <p>Prevent customers from booking on specific dates.</p>
+
+  <button id="addBlockedDateButton">
+    + Add Blocked Date
+  </button>
+
+  <div id="blockedDatesList">
+    <p>No blocked dates configured.</p>
+  </div>
+
+  <h3>Custom Availability</h3>
+
+  <p>Add special hours for specific dates.</p>
+
+  <button id="addCustomAvailabilityButton">
+    + Add Custom Availability
+  </button>
+
+  <div id="customAvailabilityList">
+    <p>No custom availability configured.</p>
+  </div>
 </div>
 
-<div class="dayRow">
-  <label><input type="checkbox" checked> Friday Open</label>
-  <input type="time" value="08:00">
-  <input type="time" value="17:00">
+<div class="admin-card">
+  <h2>Integrations</h2>
+
+  <p>Manage where appointment requests are sent.</p>
+
+  <label>Webhook URL</label>
+  <input type="text" id="webhookUrl" placeholder="https://example.com/webhook">
+
+  <label>Notification Email</label>
+  <input type="email" id="notificationEmail" placeholder="example@email.com">
+
+  <label>
+    <input type="checkbox" id="enableSmsNotifications">
+    Enable SMS Notifications
+  </label>
+
+  <label>
+    <input type="checkbox" id="enableGoogleCalendar">
+    Enable Google Calendar
+  </label>
 </div>
-
-<div class="dayRow">
-  <label><input type="checkbox" checked> Saturday Open</label>
-  <input type="time" value="09:00">
-  <input type="time" value="14:00">
-</div>
-
-<div class="dayRow">
-  <label><input type="checkbox"> Sunday Open</label>
-  <input type="time">
-  <input type="time">
-</div>
-
-<hr>
-
-<h3>Blocked Dates</h3>
-
-<p>Prevent customers from booking on specific dates.</p>
-
-<button id="addBlockedDateButton">
-  + Add Blocked Date
-</button>
-
-<div id="blockedDatesList">
-  <p>No blocked dates configured.</p>
-</div>
-
-<h3>Custom Availability</h3>
-
-<p>Add special hours for specific dates.</p>
-
-<button id="addCustomAvailabilityButton">
-  + Add Custom Availability
-</button>
-
-<div id="customAvailabilityList">
-  <p>No custom availability configured.</p>
-</div>
-
-<hr>
-
-<h2>Integrations</h2>
-
-<p>Manage where appointment requests are sent.</p>
-
-<label>Webhook URL</label>
-<input type="text" id="webhookUrl" placeholder="https://example.com/webhook">
-
-<label>Notification Email</label>
-<input type="email" id="notificationEmail" placeholder="example@email.com">
-
-<label>
-  <input type="checkbox" id="enableSmsNotifications">
-  Enable SMS Notifications
-</label>
-
-<label>
-  <input type="checkbox" id="enableGoogleCalendar">
-  Enable Google Calendar
-</label>
-
-<br><br>
 
 <button id="saveButton">Save Settings</button>
 
