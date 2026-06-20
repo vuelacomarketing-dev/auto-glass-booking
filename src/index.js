@@ -239,18 +239,44 @@ input[type="color"]::-webkit-color-swatch {
   </div>
 </div>
  
-<div class="admin-card">
-  <h2>Estimates</h2>
+<div id="adminEstimateList" class="admin-list">
 
-  <p>Manage estimate options shown to customers.</p>
+  <div class="admin-row">
+    <div>
+      <strong>Aftermarket Glass</strong>
+      <p>$375 - $425</p>
+    </div>
 
-  <button id="addEstimateButton">
-    + Add Estimate Option
-  </button>
-
-  <div id="adminEstimateList">
-    <p>Estimate options will load here.</p>
+    <div class="row-actions">
+      <button>Edit</button>
+      <button>Remove</button>
+    </div>
   </div>
+
+  <div class="admin-row">
+    <div>
+      <strong>OEM Glass</strong>
+      <p>$525 - $675</p>
+    </div>
+
+    <div class="row-actions">
+      <button>Edit</button>
+      <button>Remove</button>
+    </div>
+  </div>
+
+  <div class="admin-row">
+    <div>
+      <strong>ADAS Package</strong>
+      <p>$625 - $850</p>
+    </div>
+
+    <div class="row-actions">
+      <button>Edit</button>
+      <button>Remove</button>
+    </div>
+  </div>
+
 </div>
 
 <div class="admin-card">
