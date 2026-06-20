@@ -1049,7 +1049,7 @@ if (!zip) {
     timesArea.innerHTML =
       '<h3>Available times for ' + readableDate + '</h3>' +
       times.map(function(time) {
-        return '<button class="time-button" onclick="selectTime(\\'' + time + '\\')">' + time + '</button>';
+        return '<button class="time-button" onclick="selectTime(&quot;' + time + '&quot;)">' + time + '</button>';
       }).join("");
   }
 
