@@ -152,6 +152,15 @@ input[type="color"]::-webkit-color-swatch {
 .row-actions button {
   background: #e5e7eb;
 }
+.hidden {
+  display: none;
+}
+
+#createClientButton {
+  background: #0f766e;
+  color: white;
+  margin-top: 15px;
+}
   </style>
 </head>
 
@@ -170,6 +179,20 @@ input[type="color"]::-webkit-color-swatch {
     <option>Yazmin Auto Glass</option>
     <option>Garland Auto Glass</option>
   </select>
+</div>
+
+<div id="newClientArea" class="admin-card hidden">
+  <h2>New Client</h2>
+
+  <label>Client Name</label>
+  <input type="text" id="newClientName" placeholder="Example: Yazmin Auto Glass">
+
+  <label>Client ID</label>
+  <input type="text" id="newClientId" placeholder="example: yazmin-auto-glass">
+
+  <button id="createClientButton">
+    Create Client
+  </button>
 </div>
 
 <div class="admin-card">
