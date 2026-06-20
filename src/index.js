@@ -106,6 +106,15 @@ input[type="color"]::-webkit-color-swatch {
   align-items: center;
   margin-bottom: 12px;
 }
+#addCustomAvailabilityButton {
+  background: #0f766e;
+  color: white;
+  margin-bottom: 15px;
+}
+
+#customAvailabilityList {
+  margin-top: 15px;
+}
   </style>
 </head>
 
@@ -261,6 +270,18 @@ input[type="color"]::-webkit-color-swatch {
 
 <div id="blockedDatesList">
   <p>No blocked dates configured.</p>
+</div>
+
+<h3>Custom Availability</h3>
+
+<p>Add special hours for specific dates.</p>
+
+<button id="addCustomAvailabilityButton">
+  + Add Custom Availability
+</button>
+
+<div id="customAvailabilityList">
+  <p>No custom availability configured.</p>
 </div>
 
 <hr>
