@@ -86,6 +86,19 @@ input[type="color"]::-webkit-color-swatch {
 #adminServicesList {
   margin-top: 15px;
 }
+#addEstimateButton {
+  background: #0f766e;
+  color: white;
+  margin-bottom: 15px;
+}
+
+#adminEstimateList {
+  margin-top: 15px;
+}
+#editHoursButton {
+  background: #0f766e;
+  color: white;
+}
   </style>
 </head>
 
@@ -152,16 +165,52 @@ input[type="color"]::-webkit-color-swatch {
 </div>
 
 <hr>
+<hr>
 
 <h2>Estimates</h2>
 
-<p>Estimate settings coming soon...</p>
+<p>Manage estimate options shown to customers.</p>
+
+<button id="addEstimateButton">
+  + Add Estimate Option
+</button>
+
+<div id="adminEstimateList">
+  <p>Estimate options will load here.</p>
+</div>
+
+<hr>
 
 <hr>
 
 <h2>Scheduling</h2>
 
-<p>Scheduling settings coming soon...</p>
+<p>Manage appointment availability and booking rules.</p>
+
+<label>Appointment Length (Minutes)</label>
+<select id="slotDuration">
+  <option>30</option>
+  <option selected>60</option>
+  <option>90</option>
+  <option>120</option>
+</select>
+
+<label>Buffer Between Appointments (Minutes)</label>
+<select id="bufferMinutes">
+  <option>0</option>
+  <option selected>15</option>
+  <option>30</option>
+  <option>60</option>
+</select>
+
+<label>Maximum Days Out Customers Can Book</label>
+<input type="number" id="maxDaysOut" value="40">
+
+<br><br>
+
+<button id="editHoursButton">
+  Edit Business Hours
+</button>
 
 <hr>
 
