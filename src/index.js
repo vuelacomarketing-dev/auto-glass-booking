@@ -847,6 +847,47 @@ estimateOptions: [
   }
 ],
 
+slotDurationMinutes: 60,
+bufferMinutes: 15,
+
+businessHours: {
+  sunday: {
+    open: false,
+    start: "",
+    end: ""
+  },
+  monday: {
+    open: true,
+    start: "08:00",
+    end: "17:00"
+  },
+  tuesday: {
+    open: true,
+    start: "08:00",
+    end: "17:00"
+  },
+  wednesday: {
+    open: true,
+    start: "08:00",
+    end: "17:00"
+  },
+  thursday: {
+    open: true,
+    start: "08:00",
+    end: "17:00"
+  },
+  friday: {
+    open: true,
+    start: "08:00",
+    end: "17:00"
+  },
+  saturday: {
+    open: true,
+    start: "09:00",
+    end: "14:00"
+  }
+},
+
   webhookUrl: "https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a",
   redirectSeconds: 20
 };
@@ -888,16 +929,56 @@ let vehicleModel = "";
     yearSelect.appendChild(option);
   }
 
-  const demoAvailability = {
-    "2026-06-22": ["8:00 AM", "10:00 AM", "2:00 PM"],
-    "2026-06-23": ["9:00 AM", "11:00 AM"],
-    "2026-06-24": [],
-    "2026-06-25": ["12:00 PM", "3:00 PM"],
-    "2026-06-26": ["8:30 AM", "1:00 PM"],
-    "2026-06-27": ["10:00 AM"],
-    "2026-06-29": ["9:00 AM", "2:00 PM"],
-    "2026-06-30": []
-  };
+  function generateTimesForDate(dateKey) {
+  const date = new Date(dateKey + "T00:00:00");
+  const dayNames = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
+  ];
+
+  const dayName = dayNames[date.getDay()];
+  const hours = clientConfig.businessHours[dayName];
+
+  if (!hours || hours.open === false) {
+    return [];
+  }
+
+  const interval =
+    clientConfig.slotDurationMinutes + clientConfig.bufferMinutes;
+
+  const times = [];
+
+  let current = timeToMinutes(hours.start);
+  const end = timeToMinutes(hours.end);
+
+  while (current + clientConfig.slotDurationMinutes <= end) {
+    times.push(minutesToDisplayTime(current));
+    current += interval;
+  }
+
+  return times;
+}
+
+function timeToMinutes(time) {
+  const parts = time.split(":");
+  return Number(parts[0]) * 60 + Number(parts[1]);
+}
+
+function minutesToDisplayTime(minutes) {
+  let hour = Math.floor(minutes / 60);
+  const minute = minutes % 60;
+
+  const ampm = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12;
+  if (hour === 0) hour = 12;
+
+  return hour + ":" + String(minute).padStart(2, "0") + " " + ampm;
+}
 
   let calendarMonth = 5;
   let calendarYear = 2026;
@@ -1085,7 +1166,7 @@ if (!zip) {
       button.className = "calendar-date";
       button.textContent = day;
 
-      if (!demoAvailability.hasOwnProperty(dateKey)) {
+    if (generateTimesForDate(dateKey).length === 0) {
         button.classList.add("unavailable");
         button.disabled = true;
       } else {
@@ -1118,7 +1199,7 @@ if (!zip) {
   function selectDate(dateKey) {
     selectedDate = dateKey;
 
-    const times = demoAvailability[dateKey] || [];
+   const times = generateTimesForDate(dateKey);
     const timesArea = document.getElementById("timesArea");
 
     document.querySelectorAll(".calendar-date").forEach(function(button) {
