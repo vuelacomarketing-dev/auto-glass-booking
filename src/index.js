@@ -128,8 +128,45 @@ input[type="color"]::-webkit-color-swatch {
 
 <h2>Services</h2>
 
-<p>Service settings coming soon...</p>
+<label>
+  <input type="checkbox" checked>
+  Windshield Replacement
+</label>
 
+<label>
+  <input type="checkbox" checked>
+  Windshield Repair
+</label>
+
+<label>
+  <input type="checkbox" checked>
+  Door Glass
+</label>
+
+<label>
+  <input type="checkbox" checked>
+  Back Glass
+</label>
+
+<label>
+  <input type="checkbox" checked>
+  Quarter Glass
+</label>
+
+<label>
+  <input type="checkbox" checked>
+  ADAS Calibration
+</label>
+
+<label>
+  <input type="checkbox" checked>
+  Sunroof Glass
+</label>
+
+<label>
+  <input type="checkbox" checked>
+  Vent Glass
+</label>
 <hr>
 
 <h2>Estimates</h2>
