@@ -37,6 +37,12 @@ export default {
     margin-bottom: 52px;
     gap: 20px;
   }
+  
+  .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
   .logo img {
     max-height: 58px;
@@ -495,22 +501,27 @@ export default {
 <body>
   <div class="shell">
 
-   <header class="header">
- <a class="logo" id="logoLink" href="#">
-  <img
-    id="clientLogo"
-    src=""
-    alt="Client Logo"
-    onerror="this.src='https://vuelaco.org/default-logo.png';">
-</a>
-
-<button class="new-quote-button" onclick="startNewQuote()">
-  Start New Quote
-</button>
-
-  <a class="call-button" id="callButton" href="#">
-    Loading...
+  <header class="header">
+  <a class="logo" id="logoLink" href="#">
+    <img
+      id="clientLogo"
+      src=""
+      alt="Client Logo"
+      onerror="this.src='https://vuelaco.org/default-logo.png';">
   </a>
+
+  <div class="header-actions">
+
+    <button class="new-quote-button" onclick="startNewQuote()">
+      Start New Quote
+    </button>
+
+    <a class="call-button" id="callButton" href="#">
+      Loading...
+    </a>
+
+  </div>
+
 </header>
 
     <section class="hero">
