@@ -980,8 +980,10 @@ function minutesToDisplayTime(minutes) {
   return hour + ":" + String(minute).padStart(2, "0") + " " + ampm;
 }
 
-  let calendarMonth = 5;
-  let calendarYear = 2026;
+const today = new Date();
+
+let calendarMonth = today.getMonth();
+let calendarYear = today.getFullYear();
 
   function selectService(service) {
     selectedService = service;
