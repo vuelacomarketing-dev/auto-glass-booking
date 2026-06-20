@@ -6,6 +6,63 @@ export default {
        const adminHtml = `
 <!DOCTYPE html>
 <html>
+<head>
+  <title>VUELA Scheduler Admin</title>
+
+  <style>
+    body {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #newClientButton {
+      background: #2563eb;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    #saveButton {
+      background: #0f766e;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
 <h1>VUELA Scheduler Admin</h1>
 
 <button id="newClientButton">
@@ -48,9 +105,35 @@ export default {
 <label>Primary Soft</label>
 <input type="text" id="primarySoft">
 
+<hr>
+
+<h2>Services</h2>
+
+<p>Service settings coming soon...</p>
+
+<hr>
+
+<h2>Estimates</h2>
+
+<p>Estimate settings coming soon...</p>
+
+<hr>
+
+<h2>Scheduling</h2>
+
+<p>Scheduling settings coming soon...</p>
+
+<hr>
+
+<h2>Integrations</h2>
+
+<p>Integration settings coming soon...</p>
+
 <br><br>
 
 <button id="saveButton">Save Settings</button>
+
+</body>
 </html>
 `;
 
