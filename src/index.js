@@ -188,20 +188,10 @@ input[type="color"]::-webkit-color-swatch {
 <p>Manage appointment availability and booking rules.</p>
 
 <label>Appointment Length (Minutes)</label>
-<select id="slotDuration">
-  <option>30</option>
-  <option selected>60</option>
-  <option>90</option>
-  <option>120</option>
-</select>
+<input type="number" id="slotDuration" value="60">
 
 <label>Buffer Between Appointments (Minutes)</label>
-<select id="bufferMinutes">
-  <option>0</option>
-  <option selected>15</option>
-  <option>30</option>
-  <option>60</option>
-</select>
+<input type="number" id="bufferMinutes" value="15">
 
 <label>Maximum Days Out Customers Can Book</label>
 <input type="number" id="maxDaysOut" value="40">
