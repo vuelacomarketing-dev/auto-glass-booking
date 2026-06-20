@@ -420,6 +420,17 @@ input[type="color"]::-webkit-color-swatch {
 
 <button id="saveButton">Save Settings</button>
 
+<script>
+const newClientButton = document.getElementById("newClientButton");
+const newClientArea = document.getElementById("newClientArea");
+
+if (newClientButton && newClientArea) {
+  newClientButton.addEventListener("click", () => {
+    newClientArea.classList.toggle("hidden");
+  });
+}
+</script>
+
 </body>
 </html>
 `;
