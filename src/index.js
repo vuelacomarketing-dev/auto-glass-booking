@@ -58,6 +58,25 @@ export default {
       background: #0f766e;
       color: white;
     }
+    
+    input[type="color"] {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+}
   </style>
 </head>
 
@@ -97,13 +116,13 @@ export default {
 <h2>Branding</h2>
 
 <label>Primary Color</label>
-<input type="color" id="primaryColor">
+<input type="color" id="primaryColor" value="#0f766e">
 
 <label>Primary Dark</label>
-<input type="color" id="primaryDark">
+<input type="color" id="primaryDark" value="#115e59">
 
 <label>Primary Soft</label>
-<input type="color" id="primarySoft">
+<input type="color" id="primarySoft" value="#e6f5f3">
 
 <hr>
 
