@@ -1165,19 +1165,28 @@ if (!zip) {
         String(calendarMonth + 1).padStart(2, "0") + "-" +
         String(day).padStart(2, "0");
 
+const currentDate = new Date(dateKey + "T00:00:00");
+const todayDate = new Date();
+todayDate.setHours(0, 0, 0, 0);
+
+const maxDate = new Date(todayDate);
+maxDate.setDate(maxDate.getDate() + clientConfig.maxDaysOut);
       const button = document.createElement("button");
       button.className = "calendar-date";
       button.textContent = day;
 
-    if (generateTimesForDate(dateKey).length === 0) {
-        button.classList.add("unavailable");
-        button.disabled = true;
-      } else {
-        button.onclick = function () {
-          selectDate(dateKey);
-        };
-      }
-
+    if (
+  currentDate < todayDate ||
+  currentDate > maxDate ||
+  generateTimesForDate(dateKey).length === 0
+) {
+  button.classList.add("unavailable");
+  button.disabled = true;
+} else {
+  button.onclick = function () {
+    selectDate(dateKey);
+  };
+}
       calendarGrid.appendChild(button);
     }
   }
