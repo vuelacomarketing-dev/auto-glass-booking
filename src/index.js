@@ -896,42 +896,23 @@ vehicleModel = model;
       selectedService + " • " + selectedEstimate;
   }
   
-  function renderEstimateOptions() {
-
+function renderEstimateOptions() {
   const grid = document.getElementById("estimateGrid");
 
   grid.innerHTML = "";
 
-  clientConfig.estimateOptions.forEach(option => {
-
-    grid.innerHTML += `
-      <div class="estimate-card">
-
-        <span class="badge">${option.badge}</span>
-
-        <strong>${option.title}</strong>
-
-        <span>
-          ${option.description}
-        </span>
-
-        <br><br>
-
-        <strong>${option.priceRange}</strong>
-
-        <br><br>
-
-        <button
-          class="primary"
-          onclick="selectEstimate('${option.title}')">
-          Select
-        </button>
-
-      </div>
-    `;
-
+  clientConfig.estimateOptions.forEach(function(option) {
+    grid.innerHTML +=
+      '<div class="estimate-card">' +
+        '<span class="badge">' + option.badge + '</span>' +
+        '<strong>' + option.title + '</strong>' +
+        '<span>' + option.description + '</span>' +
+        '<br><br>' +
+        '<strong>' + option.priceRange + '</strong>' +
+        '<br><br>' +
+        '<button class="primary" onclick="selectEstimate(\'' + option.title + '\')">Select</button>' +
+      '</div>';
   });
-
 }
 
   function backToEstimate() {
