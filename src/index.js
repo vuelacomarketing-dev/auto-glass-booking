@@ -617,69 +617,7 @@ export default {
   ← Swipe to view all options →
 </p>
 
- <div class="estimate-grid">
-
-    <div class="estimate-card">
-      <span class="badge">Most Popular</span>
-      <strong>Aftermarket Glass</strong>
-      <span>
-        High quality replacement glass that meets safety standards.
-      </span>
-
-      <br><br>
-
-      <strong>$375 - $425</strong>
-
-      <br><br>
-
-      <button
-        class="primary"
-        onclick="selectEstimate('Aftermarket Glass')">
-        Select
-      </button>
-    </div>
-
-    <div class="estimate-card">
-     <span class="badge">Factory Match</span>
-      <strong>OEM Glass</strong>
-      <span>
-        Manufactured to the same specifications as your original glass.
-      </span>
-
-      <br><br>
-
-      <strong>$525 - $675</strong>
-
-      <br><br>
-
-      <button
-        class="primary"
-        onclick="selectEstimate('OEM Glass')">
-        Select
-      </button>
-    </div>
-
-   <div class="estimate-card">
-   <span class="badge">Recommended</span>
-      <strong>ADAS Package</strong>
-      <span>
-        Includes calibration for cameras and advanced safety systems.
-      </span>
-
-      <br><br>
-
-      <strong>$625 - $850</strong>
-
-      <br><br>
-
-      <button
-        class="primary"
-        onclick="selectEstimate('ADAS Package')">
-        Select
-      </button>
-    </div>
-
-  </div>
+<div id="estimateGrid" class="estimate-grid"></div>
 
 </section>
 
@@ -820,6 +758,8 @@ export default {
     </main>
 
   </div>
+
+  
 <script>
 const clientConfig = {
   clientId: "demo",
@@ -831,28 +771,44 @@ const clientConfig = {
   primaryColor: "#0f766e",
   primaryDark: "#115e59",
 primarySoft: "#e6f5f3",
+estimateOptions: [
+  {
+    badge: "Most Popular",
+    title: "Aftermarket Glass",
+    description: "High quality replacement glass that meets safety standards.",
+    priceRange: "$375 - $425"
+  },
+  {
+    badge: "Factory Match",
+    title: "OEM Glass",
+    description: "Manufactured to the same specifications as your original glass.",
+    priceRange: "$525 - $675"
+  },
+  {
+    badge: "Recommended",
+    title: "ADAS Package",
+    description: "Includes calibration for cameras and advanced safety systems.",
+    priceRange: "$625 - $850"
+  }
+],
   webhookUrl: "https://webhook.site/1712bd1e-b596-41d3-83ec-3e5b5018c05a",
   redirectSeconds: 20
 };
 
 document.getElementById("logoLink").href =
   clientConfig.websiteUrl;
-
 document.getElementById("clientLogo").src =
   clientConfig.logoUrl;
-
 document.getElementById("clientLogo").alt =
   clientConfig.name + " Logo";
-
 document.getElementById("callButton").href =
   "tel:" + clientConfig.phoneLink;
-
 document.getElementById("callButton").textContent =
   clientConfig.phone;
-
-  document.documentElement.style.setProperty("--primary-color", clientConfig.primaryColor);
+document.documentElement.style.setProperty("--primary-color", clientConfig.primaryColor);
 document.documentElement.style.setProperty("--primary-dark", clientConfig.primaryDark);
 document.documentElement.style.setProperty("--primary-soft", clientConfig.primarySoft);
+renderEstimateOptions();
   
   let selectedService = "";
   let selectedEstimate = "";
@@ -939,6 +895,44 @@ vehicleModel = model;
     document.getElementById("estimateSummary").textContent =
       selectedService + " • " + selectedEstimate;
   }
+  
+  function renderEstimateOptions() {
+
+  const grid = document.getElementById("estimateGrid");
+
+  grid.innerHTML = "";
+
+  clientConfig.estimateOptions.forEach(option => {
+
+    grid.innerHTML += `
+      <div class="estimate-card">
+
+        <span class="badge">${option.badge}</span>
+
+        <strong>${option.title}</strong>
+
+        <span>
+          ${option.description}
+        </span>
+
+        <br><br>
+
+        <strong>${option.priceRange}</strong>
+
+        <br><br>
+
+        <button
+          class="primary"
+          onclick="selectEstimate('${option.title}')">
+          Select
+        </button>
+
+      </div>
+    `;
+
+  });
+
+}
 
   function backToEstimate() {
     document.getElementById("serviceTypeScreen").classList.add("hidden");
