@@ -7,7 +7,12 @@ export default {
 <!DOCTYPE html>
 <html>
 <h1>VUELA Scheduler Admin</h1>
-
+<label>Select Client</label>
+<select>
+  <option>VUELA Demo</option>
+  <option>Yazmin Auto Glass</option>
+  <option>Garland Auto Glass</option>
+</select>
 <h2>Client Information</h2>
 
 <label>Business Name</label>
