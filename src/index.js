@@ -429,6 +429,18 @@ if (newClientButton && newClientArea) {
     newClientArea.classList.toggle("hidden");
   });
 }
+
+const createClientButton = document.getElementById("createClientButton");
+const clientSelect = document.querySelector("select");
+const newClientName = document.getElementById("newClientName");
+
+createClientButton.addEventListener("click", () => {
+  const option = document.createElement("option");
+  option.textContent = newClientName.value;
+
+  clientSelect.appendChild(option);
+});
+
 </script>
 
 </body>
