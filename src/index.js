@@ -1360,8 +1360,19 @@ function startNewQuote() {
   vehicleMake = "";
   vehicleModel = "";
 
-  document.querySelectorAll("main section").forEach(function(section) {
-    section.classList.add("hidden");
+  const screens = [
+    "serviceScreen",
+    "vehicleScreen",
+    "estimateScreen",
+    "serviceTypeScreen",
+    "zipScreen",
+    "dateScreen",
+    "contactScreen",
+    "confirmationScreen"
+  ];
+
+  screens.forEach(function(screenId) {
+    document.getElementById(screenId).classList.add("hidden");
   });
 
   document.getElementById("serviceScreen").classList.remove("hidden");
@@ -1383,8 +1394,9 @@ function startNewQuote() {
   });
 
   document.getElementById("timesArea").innerHTML = "";
-}
 
+  window.scrollTo(0, 0);
+}
 </script>
 </body>
 </html>
