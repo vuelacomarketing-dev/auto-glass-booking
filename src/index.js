@@ -910,7 +910,7 @@ function renderEstimateOptions() {
         '<br><br>' +
         '<strong>' + option.priceRange + '</strong>' +
         '<br><br>' +
-        '<button class="primary" onclick="selectEstimate(\'' + option.title + '\')">Select</button>' +
+       '<button class="primary" onclick="selectEstimate(&quot;' + option.title + '&quot;)">Select</button>' +
       '</div>';
   });
 }
