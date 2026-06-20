@@ -99,6 +99,13 @@ input[type="color"]::-webkit-color-swatch {
   background: #0f766e;
   color: white;
 }
+.dayRow {
+  display: grid;
+  grid-template-columns: 1fr 150px 150px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
   </style>
 </head>
 
@@ -201,6 +208,50 @@ input[type="color"]::-webkit-color-swatch {
 <button id="editHoursButton">
   Edit Business Hours
 </button>
+
+<h3>Business Hours</h3>
+
+<div class="dayRow">
+  <label><input type="checkbox" checked> Monday Open</label>
+  <input type="time" value="08:00">
+  <input type="time" value="17:00">
+</div>
+
+<div class="dayRow">
+  <label><input type="checkbox" checked> Tuesday Open</label>
+  <input type="time" value="08:00">
+  <input type="time" value="17:00">
+</div>
+
+<div class="dayRow">
+  <label><input type="checkbox" checked> Wednesday Open</label>
+  <input type="time" value="08:00">
+  <input type="time" value="17:00">
+</div>
+
+<div class="dayRow">
+  <label><input type="checkbox" checked> Thursday Open</label>
+  <input type="time" value="08:00">
+  <input type="time" value="17:00">
+</div>
+
+<div class="dayRow">
+  <label><input type="checkbox" checked> Friday Open</label>
+  <input type="time" value="08:00">
+  <input type="time" value="17:00">
+</div>
+
+<div class="dayRow">
+  <label><input type="checkbox" checked> Saturday Open</label>
+  <input type="time" value="09:00">
+  <input type="time" value="14:00">
+</div>
+
+<div class="dayRow">
+  <label><input type="checkbox"> Sunday Open</label>
+  <input type="time">
+  <input type="time">
+</div>
 
 <hr>
 
