@@ -8,6 +8,10 @@ export default {
 <html>
 <h1>VUELA Scheduler Admin</h1>
 
+<button id="newClientButton">
+  + New Client
+</button>
+
 <label>Select Client</label>
 <select>
   <option>VUELA Demo</option>
