@@ -238,45 +238,55 @@ input[type="color"]::-webkit-color-swatch {
 
   </div>
 </div>
- 
-<div id="adminEstimateList" class="admin-list">
 
-  <div class="admin-row">
-    <div>
-      <strong>Aftermarket Glass</strong>
-      <p>$375 - $425</p>
+ <div class="admin-card">
+  <h2>Estimates</h2>
+
+  <p>Manage estimate options shown to customers.</p>
+
+  <button id="addEstimateButton">
+    + Add Estimate Option
+  </button>
+
+  <div id="adminEstimateList" class="admin-list">
+
+    <div class="admin-row">
+      <div>
+        <strong>Aftermarket Glass</strong>
+        <p>$375 - $425</p>
+      </div>
+
+      <div class="row-actions">
+        <button>Edit</button>
+        <button>Remove</button>
+      </div>
     </div>
 
-    <div class="row-actions">
-      <button>Edit</button>
-      <button>Remove</button>
+    <div class="admin-row">
+      <div>
+        <strong>OEM Glass</strong>
+        <p>$525 - $675</p>
+      </div>
+
+      <div class="row-actions">
+        <button>Edit</button>
+        <button>Remove</button>
+      </div>
     </div>
+
+    <div class="admin-row">
+      <div>
+        <strong>ADAS Package</strong>
+        <p>$625 - $850</p>
+      </div>
+
+      <div class="row-actions">
+        <button>Edit</button>
+        <button>Remove</button>
+      </div>
+    </div>
+
   </div>
-
-  <div class="admin-row">
-    <div>
-      <strong>OEM Glass</strong>
-      <p>$525 - $675</p>
-    </div>
-
-    <div class="row-actions">
-      <button>Edit</button>
-      <button>Remove</button>
-    </div>
-  </div>
-
-  <div class="admin-row">
-    <div>
-      <strong>ADAS Package</strong>
-      <p>$625 - $850</p>
-    </div>
-
-    <div class="row-actions">
-      <button>Edit</button>
-      <button>Remove</button>
-    </div>
-  </div>
-
 </div>
 
 <div class="admin-card">
