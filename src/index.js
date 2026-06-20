@@ -6,13 +6,34 @@ export default {
        const adminHtml = `
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Scheduler Admin</title>
-</head>
-<body>
-  <h1>Scheduler Admin</h1>
-  <p>Admin panel coming soon.</p>
-</body>
+<h1>VUELA Scheduler Admin</h1>
+
+<h2>Client Information</h2>
+
+<label>Business Name</label>
+<input type="text" />
+
+<label>Phone</label>
+<input type="text" />
+
+<label>Website URL</label>
+<input type="text" />
+
+<label>Logo URL</label>
+<input type="text" />
+
+<h2>Branding</h2>
+
+<label>Primary Color</label>
+<input type="text" />
+
+<label>Primary Dark</label>
+<input type="text" />
+
+<label>Primary Soft</label>
+<input type="text" />
+
+<button>Save Settings</button>
 </html>
 `;
 
