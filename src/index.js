@@ -97,13 +97,13 @@ export default {
 <h2>Branding</h2>
 
 <label>Primary Color</label>
-<input type="text" id="primaryColor">
+<input type="color" id="primaryColor">
 
 <label>Primary Dark</label>
-<input type="text" id="primaryDark">
+<input type="color" id="primaryDark">
 
 <label>Primary Soft</label>
-<input type="text" id="primarySoft">
+<input type="color" id="primarySoft">
 
 <hr>
 
