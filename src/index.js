@@ -214,9 +214,27 @@ input[type="color"]::-webkit-color-swatch {
 
 <hr>
 
+<hr>
+
 <h2>Integrations</h2>
 
-<p>Integration settings coming soon...</p>
+<p>Manage where appointment requests are sent.</p>
+
+<label>Webhook URL</label>
+<input type="text" id="webhookUrl" placeholder="https://example.com/webhook">
+
+<label>Notification Email</label>
+<input type="email" id="notificationEmail" placeholder="example@email.com">
+
+<label>
+  <input type="checkbox" id="enableSmsNotifications">
+  Enable SMS Notifications
+</label>
+
+<label>
+  <input type="checkbox" id="enableGoogleCalendar">
+  Enable Google Calendar
+</label>
 
 <br><br>
 
