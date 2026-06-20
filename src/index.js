@@ -122,6 +122,36 @@ input[type="color"]::-webkit-color-swatch {
 #customAvailabilityList {
   margin-top: 15px;
 }
+.admin-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.admin-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.admin-row p {
+  margin: 6px 0 0;
+  color: #6b7280;
+}
+
+.row-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.row-actions button {
+  background: #e5e7eb;
+}
   </style>
 </head>
 
@@ -180,11 +210,35 @@ input[type="color"]::-webkit-color-swatch {
     + Add Service
   </button>
 
-  <div id="adminServicesList">
-    <p>Services will load here.</p>
+  <div id="adminServicesList" class="admin-list">
+
+    <div class="admin-row">
+      <div>
+        <strong>Windshield Replacement</strong>
+        <p>Cracked or damaged windshield requiring replacement.</p>
+      </div>
+
+      <div class="row-actions">
+        <button>Edit</button>
+        <button>Remove</button>
+      </div>
+    </div>
+
+    <div class="admin-row">
+      <div>
+        <strong>Windshield Repair</strong>
+        <p>Small chips and minor damage that may be repairable.</p>
+      </div>
+
+      <div class="row-actions">
+        <button>Edit</button>
+        <button>Remove</button>
+      </div>
+    </div>
+
   </div>
 </div>
-
+ 
 <div class="admin-card">
   <h2>Estimates</h2>
 
