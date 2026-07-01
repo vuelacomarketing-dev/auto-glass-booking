@@ -467,24 +467,36 @@ if (newClientButton && newClientArea) {
 const createClientButton = document.getElementById("createClientButton");
 const clientSelect = document.getElementById("clientSelect");
 const newClientName = document.getElementById("newClientName");
+const newClientId = document.getElementById("newClientId");
+
+newClientName.addEventListener("input", () => {
+  newClientId.value = newClientName.value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+});
 
 createClientButton.addEventListener("click", () => {
 
   const name = newClientName.value.trim();
+  const id = newClientId.value.trim();
 
-  if (!name) {
+  if (!name || !id) {
     alert("Please enter a client name.");
     return;
   }
 
   const option = document.createElement("option");
+  option.value = id;
   option.textContent = name;
 
   clientSelect.appendChild(option);
 
-  clientSelect.value = option.value;
+  clientSelect.value = id;
 
   newClientName.value = "";
+  newClientId.value = "";
 
   newClientArea.classList.add("hidden");
 });
