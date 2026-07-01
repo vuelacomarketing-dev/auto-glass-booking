@@ -397,25 +397,59 @@ input[type="color"]::-webkit-color-swatch {
 </div>
 
 <div class="admin-card">
-  <h2>Integrations</h2>
+  <h2>Scheduler Integration</h2>
 
-  <p>Manage where appointment requests are sent.</p>
+  <p>Connect to the calendar or scheduling system used for availability and appointments.</p>
 
-  <label>Webhook URL</label>
-  <input type="text" id="webhookUrl" placeholder="https://example.com/webhook">
+  <label>Scheduling Platform</label>
+  <select id="schedulingPlatform">
+    <option value="manual">Manual Scheduler</option>
+    <option value="ghl">GoHighLevel</option>
+    <option value="google_calendar">Google Calendar</option>
+    <option value="calendly">Calendly</option>
+    <option value="acuity">Acuity Scheduling</option>
+    <option value="custom_api">Custom API</option>
+  </select>
 
-  <label>Notification Email</label>
-  <input type="email" id="notificationEmail" placeholder="example@email.com">
+  <label>API Base URL</label>
+  <input type="text" id="schedulerApiBaseUrl">
 
-  <label>
-    <input type="checkbox" id="enableSmsNotifications">
-    Enable SMS Notifications
-  </label>
+  <label>API Key / Access Token</label>
+  <input type="text" id="schedulerApiKey">
 
-  <label>
-    <input type="checkbox" id="enableGoogleCalendar">
-    Enable Google Calendar
-  </label>
+  <label>Calendar ID</label>
+  <input type="text" id="calendarId">
+
+  <label>Appointment Type ID</label>
+  <input type="text" id="appointmentTypeId">
+</div>
+
+<div class="admin-card">
+  <h2>CRM Integration</h2>
+
+  <p>Connect to the CRM where customer and appointment details should be sent.</p>
+
+  <label>CRM Platform</label>
+  <select id="crmPlatform">
+    <option value="none">None</option>
+    <option value="ghl">GoHighLevel</option>
+    <option value="hubspot">HubSpot</option>
+    <option value="salesforce">Salesforce</option>
+    <option value="zoho">Zoho CRM</option>
+    <option value="custom_api">Custom API</option>
+  </select>
+
+  <label>API Base URL</label>
+  <input type="text" id="crmApiBaseUrl">
+
+  <label>API Key / Access Token</label>
+  <input type="text" id="crmApiKey">
+
+  <label>Location / Account ID</label>
+  <input type="text" id="crmAccountId">
+
+  <label>Pipeline / Workflow ID</label>
+  <input type="text" id="crmPipelineId">
 </div>
 
 <button id="saveButton">Save Settings</button>
