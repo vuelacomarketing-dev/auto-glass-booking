@@ -187,9 +187,12 @@ input[type="color"]::-webkit-color-swatch {
   <label>Client Name</label>
   <input type="text" id="newClientName" placeholder="Example: Yazmin Auto Glass">
 
-  <label>Client ID</label>
-  <input type="text" id="newClientId" placeholder="example: yazmin-auto-glass">
-
+<label>Client ID</label> 
+<input
+  type="text"
+  id="newClientId"
+  readonly>
+  
   <button id="createClientButton">
     Create Client
   </button>
