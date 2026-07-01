@@ -487,8 +487,6 @@ createClientButton.addEventListener("click", () => {
   newClientName.value = "";
 
   newClientArea.classList.add("hidden");
-
-});
 });
 
 </script>
