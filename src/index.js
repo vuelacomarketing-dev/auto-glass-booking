@@ -174,7 +174,7 @@ input[type="color"]::-webkit-color-swatch {
   </button>
 
   <label>Select Client</label>
-  <select>
+  <select id="clientSelect">
     <option>VUELA Demo</option>
     <option>Yazmin Auto Glass</option>
     <option>Garland Auto Glass</option>
@@ -465,14 +465,30 @@ if (newClientButton && newClientArea) {
 }
 
 const createClientButton = document.getElementById("createClientButton");
-const clientSelect = document.querySelector("select");
+const clientSelect = document.getElementById("clientSelect");
 const newClientName = document.getElementById("newClientName");
 
 createClientButton.addEventListener("click", () => {
+
+  const name = newClientName.value.trim();
+
+  if (!name) {
+    alert("Please enter a client name.");
+    return;
+  }
+
   const option = document.createElement("option");
-  option.textContent = newClientName.value;
+  option.textContent = name;
 
   clientSelect.appendChild(option);
+
+  clientSelect.value = option.value;
+
+  newClientName.value = "";
+
+  newClientArea.classList.add("hidden");
+
+});
 });
 
 </script>
